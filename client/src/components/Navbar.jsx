@@ -2,6 +2,7 @@ import Image from "next/image";
 import SearchBar from "./SearchBar";
 import Link from "next/link";
 import { ShoppingCart, User } from "lucide-react";
+import { MenuIcon } from "lucide-react";
 
 {
   /* <div className="mx-auto p-4 sm:px-0 sm:max-w-xl  md:max-w-2xl lg:max-w-3xl xl:max-w-6xl"></div> */
@@ -10,15 +11,25 @@ import { ShoppingCart, User } from "lucide-react";
 const Navbar = () => {
   return (
     <nav className="bg-zinc-900 text-white">
-      <div className="p-4 sm:p-8 flex justify-between items-center sm:px-0 sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-6xl mx-auto gap-24">
+      <div className="p-4 sm:p-8 flex justify-between items-center sm:px-0 sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-6xl mx-auto gap-24 flex-row-reverse sm:flex-row">
         {/* LOGO */}
-        <Link href={"/"} className="sm:w-3/12 sm:translate-y-3">
+        <Link
+          href={"/"}
+          className="w-full flex items-center justify-center mx-auto sm:w-3/12 sm:translate-y-3"
+        >
           <Image
-            src={"/logo.svg"}
+            src={`/logo.svg`}
             width={128}
             height={128}
             alt="لوگو گالری ساعت سیلور"
-            className="w-32"
+            className="hidden sm:block"
+          />
+          <Image
+            src={`/logo-fav.svg`}
+            width={64}
+            height={64}
+            alt="لوگو گالری ساعت سیلور"
+            className="block sm:hidden"
           />
         </Link>
 
@@ -28,7 +39,7 @@ const Navbar = () => {
         </div>
 
         {/* LOGIN AND CART BUTTONS */}
-        <div className="sm:flex items-center gap-2 w-3/12">
+        <div className="hidden sm:flex items-center gap-2 sm:w-3/12">
           <Link href={"/cart"}>
             <ShoppingCart
               size={36}
@@ -47,6 +58,7 @@ const Navbar = () => {
             <Link href={"/login"}>عضویت</Link>
           </div>
         </div>
+        <MenuIcon className="w-full sm:hidden" />
       </div>
     </nav>
   );
