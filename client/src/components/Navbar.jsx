@@ -11,9 +11,9 @@ import { MenuIcon } from "lucide-react";
 const Navbar = () => {
   return (
     <nav className="bg-zinc-900 text-white">
-      <div className="p-2 sm:p-8 flex justify-between items-center sm:px-0 sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-[1400px] mx-auto gap-24 flex-row-reverse sm:flex-row">
+      <div className="p-4 sm:p-8 flex justify-between items-center sm:px-0 sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-[1400px] mx-auto sm:gap-24 flex-row-reverse sm:flex-row">
         {/* LOGO */}
-        <Link href={"/"} className="mx-auto sm:w-3/12 sm:translate-y-3">
+        <Link href={"/"} className="sm:mx-auto sm:w-3/12 sm:translate-y-3">
           <Image
             src={`/logo.svg`}
             width={128}
