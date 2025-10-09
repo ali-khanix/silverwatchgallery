@@ -3,6 +3,7 @@ import SearchBar from "./SearchBar";
 import Link from "next/link";
 import { ShoppingCart, User } from "lucide-react";
 import { MenuIcon } from "lucide-react";
+import { Search } from "lucide-react";
 
 {
   /* <div className="mx-auto p-4 sm:px-0 sm:max-w-xl  md:max-w-2xl lg:max-w-3xl xl:max-w-6xl"></div> */
@@ -10,7 +11,7 @@ import { MenuIcon } from "lucide-react";
 
 const Navbar = () => {
   return (
-    <nav className="bg-zinc-900 text-white">
+    <nav className="bg-zinc-950 text-white">
       <div className="p-4 sm:p-8 flex justify-between items-center sm:px-0 sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-[1400px] mx-auto sm:gap-24 flex-row-reverse sm:flex-row">
         {/* LOGO */}
         <Link href={"/"} className="sm:mx-auto sm:w-3/12 sm:translate-y-3">
@@ -19,14 +20,6 @@ const Navbar = () => {
             width={128}
             height={128}
             alt="لوگو گالری ساعت سیلور"
-            className="hidden sm:block"
-          />
-          <Image
-            src={`/logo-fav.svg`}
-            width={48}
-            height={48}
-            alt="لوگو گالری ساعت سیلور"
-            className="block sm:hidden max-w-2xl"
           />
         </Link>
 
@@ -39,14 +32,14 @@ const Navbar = () => {
         <div className="hidden sm:flex items-center gap-2 sm:w-3/12">
           <Link href={"/cart"}>
             <ShoppingCart
-              size={36}
-              className="border-1 border-gray-500 p-1 rounded-md"
+              size={48}
+              className="border-1 border-gray-500 p-2.5 rounded-[10px]"
             />
           </Link>
           <Link href={"/user"}>
             <User
-              size={36}
-              className="border-1 border-gray-500 p-1 rounded-md"
+              size={48}
+              className="border-1 border-gray-500 p-2.5 rounded-[10px]"
             />
           </Link>
           <div className="flex gap-2 text-gray-400 font-light text-sm">
@@ -55,12 +48,10 @@ const Navbar = () => {
             <Link href={"/login"}>عضویت</Link>
           </div>
         </div>
-        <div className="sm:hidden flex flex-row gap-2 justify-center items-center">
-          <MenuIcon size={36} />
-          <ShoppingCart
-            size={42}
-            className="border-1 p-1 border-gray-500 rounded-md text-gray-300"
-          />
+        <div className="sm:hidden flex flex-row gap-[30px] justify-center items-center">
+          <MenuIcon size={32} />
+          <ShoppingCart size={32} className="text-gray-300" />
+          <Search size={32} />
         </div>
       </div>
     </nav>
