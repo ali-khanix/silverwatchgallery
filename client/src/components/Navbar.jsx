@@ -11,12 +11,9 @@ import { MenuIcon } from "lucide-react";
 const Navbar = () => {
   return (
     <nav className="bg-zinc-900 text-white">
-      <div className="p-4 sm:p-8 flex justify-between items-center sm:px-0 sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-6xl mx-auto gap-24 flex-row-reverse sm:flex-row">
+      <div className="p-2 sm:p-8 flex justify-between items-center sm:px-0 sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-[1400px] mx-auto gap-24 flex-row-reverse sm:flex-row">
         {/* LOGO */}
-        <Link
-          href={"/"}
-          className="w-full flex items-center justify-center mx-auto sm:w-3/12 sm:translate-y-3"
-        >
+        <Link href={"/"} className="mx-auto sm:w-3/12 sm:translate-y-3">
           <Image
             src={`/logo.svg`}
             width={128}
@@ -26,10 +23,10 @@ const Navbar = () => {
           />
           <Image
             src={`/logo-fav.svg`}
-            width={64}
-            height={64}
+            width={48}
+            height={48}
             alt="لوگو گالری ساعت سیلور"
-            className="block sm:hidden"
+            className="block sm:hidden max-w-2xl"
           />
         </Link>
 
@@ -58,7 +55,13 @@ const Navbar = () => {
             <Link href={"/login"}>عضویت</Link>
           </div>
         </div>
-        <MenuIcon size={36} className="w-full sm:hidden" />
+        <div className="sm:hidden flex flex-row gap-2 justify-center items-center">
+          <MenuIcon size={36} />
+          <ShoppingCart
+            size={42}
+            className="border-1 p-1 border-gray-500 rounded-md text-gray-300"
+          />
+        </div>
       </div>
     </nav>
   );
