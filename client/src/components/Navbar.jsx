@@ -58,7 +58,7 @@ const Navbar = () => {
             <Link href={"/login"}>عضویت</Link>
           </div>
         </div>
-        <MenuIcon className="w-full sm:hidden" />
+        <MenuIcon size={36} className="w-full sm:hidden" />
       </div>
     </nav>
   );
