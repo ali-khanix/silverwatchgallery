@@ -10,14 +10,15 @@ import { ShoppingCart, User } from "lucide-react";
 const Navbar = () => {
   return (
     <nav className="bg-zinc-900 text-white">
-      <div className="p-8 flex justify-between items-center sm:px-0 sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-6xl mx-auto">
+      <div className="p-4 sm:p-8 flex justify-between items-center sm:px-0 sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-6xl mx-auto gap-24">
         {/* LOGO */}
-        <Link href={"/"} className="w-3/12 translate-y-3">
+        <Link href={"/"} className="sm:w-3/12 sm:translate-y-3">
           <Image
             src={"/logo.svg"}
             width={128}
             height={128}
             alt="لوگو گالری ساعت سیلور"
+            className="w-32"
           />
         </Link>
 
@@ -27,9 +28,19 @@ const Navbar = () => {
         </div>
 
         {/* LOGIN AND CART BUTTONS */}
-        <div className="flex gap-2 w-3/12">
-          <ShoppingCart />
-          <User />
+        <div className="sm:flex items-center gap-2 w-3/12">
+          <Link href={"/cart"}>
+            <ShoppingCart
+              size={36}
+              className="border-1 border-gray-500 p-1 rounded-md"
+            />
+          </Link>
+          <Link href={"/user"}>
+            <User
+              size={36}
+              className="border-1 border-gray-500 p-1 rounded-md"
+            />
+          </Link>
           <div className="flex gap-2 text-gray-400 font-light text-sm">
             <Link href={"/login"}>ورود</Link>
             <span>|</span>
