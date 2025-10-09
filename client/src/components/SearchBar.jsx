@@ -3,9 +3,13 @@ import { Input } from "./ui/input";
 
 const SearchBar = () => {
   return (
-    <div className="">
-      <SearchIcon />
-      <Input placeholde={"جستجو"} type={"search"} />
+    <div className="relative w-full hidden sm:flex">
+      <SearchIcon className="absolute right-3 top-1/2 -translate-y-1/2 " />
+      <Input
+        placeholder={"جستجو..."}
+        type={"search"}
+        className="pr-10 border-zinc-700"
+      />
     </div>
   );
 };
