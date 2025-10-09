@@ -8,7 +8,7 @@ const SearchBar = () => {
       <Input
         placeholder={"جستجو..."}
         type={"search"}
-        className="pr-10 border-zinc-700 py-6 rounded-[12px]"
+        className="pr-10 border-zinc-700 border-[2px] py-6 rounded-[16px]"
       />
     </div>
   );
