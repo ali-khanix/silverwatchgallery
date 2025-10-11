@@ -12,7 +12,7 @@ import { Search } from "lucide-react";
 const Navbar = () => {
   return (
     <nav className="bg-zinc-950 text-white">
-      <div className="p-8 sm:p-8 flex justify-between items-center sm:px-0 sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-[1400px] mx-auto sm:gap-24 flex-row-reverse sm:flex-row">
+      <div className="p-8 sm:p-8 flex justify-between items-center sm:px-0 sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-6xl mx-auto sm:gap-24 flex-row-reverse sm:flex-row">
         {/* LOGO */}
         <Link href={"/"} className="sm:mx-auto sm:w-3/12 sm:translate-y-3">
           <Image
@@ -30,7 +30,7 @@ const Navbar = () => {
         </div>
 
         {/* LOGIN AND CART BUTTONS */}
-        <div className="hidden sm:flex items-center gap-2 sm:w-3/12">
+        <div className="hidden sm:flex items-center justify-end gap-2 sm:w-3/12">
           <Link href={"/cart"}>
             <ShoppingCart
               size={48}
@@ -43,7 +43,7 @@ const Navbar = () => {
               className="border-1 border-gray-500 p-2.5 rounded-[10px]"
             />
           </Link>
-          <div className="flex gap-2 text-gray-400 font-light text-sm">
+          <div className="flex gap-2 text-gray-400 font-light">
             <Link href={"/login"}>ورود</Link>
             <span>|</span>
             <Link href={"/login"}>عضویت</Link>
@@ -51,7 +51,9 @@ const Navbar = () => {
         </div>
         <div className="sm:hidden flex flex-row gap-[30px] justify-center items-center">
           <MenuIcon size={32} />
-          <ShoppingCart size={32} className="text-gray-300" />
+          <Link href={"/cart"}>
+            <ShoppingCart size={32} className="text-gray-300" />
+          </Link>
           <Search size={32} />
         </div>
       </div>
