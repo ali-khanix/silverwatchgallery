@@ -13,7 +13,7 @@ import Categories from "./Categories";
 const Navbar = () => {
   return (
     <nav className="bg-zinc-950 text-white">
-      <div className="px-8 pt-8 pb-2 flex justify-between items-center sm:px-0 sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-6xl mx-auto sm:gap-24 flex-row-reverse sm:flex-row ">
+      <div className="p-4 sm:px-8 sm:pt-8 sm:pb-2 flex justify-between items-center sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-6xl mx-auto sm:gap-24 flex-row-reverse sm:flex-row ">
         {/* LOGO */}
         <Link href={"/"} className="sm:mx-auto sm:w-3/12 sm:translate-y-3">
           <Image
@@ -59,7 +59,9 @@ const Navbar = () => {
         </div>
       </div>
 
-      <Categories />
+      <div className="hidden sm:flex">
+        <Categories />
+      </div>
     </nav>
   );
 };
