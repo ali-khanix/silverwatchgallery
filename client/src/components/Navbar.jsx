@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ShoppingCart, User } from "lucide-react";
 import { MenuIcon } from "lucide-react";
 import { Search } from "lucide-react";
+import Categories from "./Categories";
 
 {
   /* <div className="mx-auto p-4 sm:px-0 sm:max-w-xl  md:max-w-2xl lg:max-w-3xl xl:max-w-6xl"></div> */
@@ -12,7 +13,7 @@ import { Search } from "lucide-react";
 const Navbar = () => {
   return (
     <nav className="bg-zinc-950 text-white">
-      <div className="p-8 sm:p-8 flex justify-between items-center sm:px-0 sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-6xl mx-auto sm:gap-24 flex-row-reverse sm:flex-row">
+      <div className="px-8 pt-8 pb-2 flex justify-between items-center sm:px-0 sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-6xl mx-auto sm:gap-24 flex-row-reverse sm:flex-row ">
         {/* LOGO */}
         <Link href={"/"} className="sm:mx-auto sm:w-3/12 sm:translate-y-3">
           <Image
@@ -57,6 +58,8 @@ const Navbar = () => {
           <Search size={32} />
         </div>
       </div>
+
+      <Categories />
     </nav>
   );
 };
