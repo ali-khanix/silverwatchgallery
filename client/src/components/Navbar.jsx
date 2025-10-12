@@ -47,7 +47,7 @@ const Navbar = () => {
           <div className="flex gap-2 text-gray-400 font-light">
             <Link href={"/login"}>ورود</Link>
             <span>|</span>
-            <Link href={"/login"}>عضویت</Link>
+            <Link href={"/sign-up"}>عضویت</Link>
           </div>
         </div>
         <div className="sm:hidden flex flex-row gap-[30px] justify-center items-center">
