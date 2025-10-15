@@ -1,7 +1,8 @@
 import ProductsList from "@/components/ProductsList";
 import Image from "next/image";
 
-export default function Home() {
+export default function Home({ searchParams }) {
+  console.log(searchParams);
   return (
     <>
       <div className="relative aspect-[1/1] sm:aspect-[3/1]">
