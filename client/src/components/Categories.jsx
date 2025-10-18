@@ -28,11 +28,11 @@ const menuItems = [
 
 const Categories = () => {
   return (
-    <div className="flex justify-center items-center mx-auto ">
+    <div className="w-full flex justify-start items-center mx-auto ">
       <ul className="flex gap-8 py-4">
         {menuItems.map((item) => (
           <li key={item.name} className="-translate-x-3">
-            <Link href={`/${item?.slug}`}>
+            <Link href={`/${item?.slug}`} className="hover:text-zinc-400">
               <div className="flex flex-row gap-2">
                 {item?.icon} {item.name}
               </div>
