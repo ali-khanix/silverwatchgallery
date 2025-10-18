@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+![alt text](./public/Screenshot_4.webp)
+
 First, run the development server:
 
 ```bash
