@@ -6,7 +6,12 @@ const ProductCard = ({ product }) => {
   return (
     <div className="rounded-3xl overflow-hidden bg-white flex sm:block p-2 gap-4 sm:px-4 sm:py-8">
       {/* IMAGE */}
-      <Link href={"/products"} className="w-[35%]">
+      <Link
+        href={`/products/${encodeURIComponent(
+          product.name.replace(/\s+/g, "-")
+        )}`}
+        className="w-[35%]"
+      >
         <div className="relative aspect-[3/4]">
           <Image
             src={product.images.black}
