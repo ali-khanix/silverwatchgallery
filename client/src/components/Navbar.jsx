@@ -13,7 +13,7 @@ import Categories from "./Categories";
 const Navbar = () => {
   return (
     <nav className="bg-zinc-950 text-white">
-      <div className="p-4 flex justify-between items-center sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-6xl mx-auto sm:gap-24 flex-row-reverse sm:flex-row ">
+      <div className=" py-4 flex justify-between items-center sm:max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-6xl mx-auto sm:gap-24 flex-row-reverse sm:flex-row ">
         {/* LOGO */}
         <Link href={"/"} className="sm:mx-auto sm:w-3/12 sm:translate-y-3">
           <Image
@@ -26,29 +26,20 @@ const Navbar = () => {
         </Link>
 
         {/* SEARCH INPUT AND CATEGORIES */}
-        <div className="w-6/12 flex flex-col gap-4 mx-4">
+        <div className="w-5/12 flex flex-col gap-4 mx-4">
           <SearchBar />
         </div>
 
         {/* LOGIN AND CART BUTTONS */}
-        <div className="hidden sm:flex items-center justify-end gap-2 sm:w-3/12">
-          <Link href={"/cart"}>
-            <ShoppingCart
-              size={48}
-              className="border-1 border-gray-500 p-2.5 rounded-[10px]"
-            />
+        <div className="hidden sm:flex items-center justify-end sm:w-4/12 gap-4">
+          <Link href={"/cart"} className="hover:text-zinc-400">
+            <ShoppingCart size={24} className="" />
           </Link>
-          <Link href={"/user"}>
-            <User
-              size={48}
-              className="border-1 border-gray-500 p-2.5 rounded-[10px]"
-            />
+
+          <Link href={"/user"} className="flex gap-1 hover:text-zinc-400">
+            <User size={24} />
+            <span className="text-sm">ورود یا عضو شوید</span>
           </Link>
-          <div className="flex gap-2 text-gray-400 font-light">
-            <Link href={"/login"}>ورود</Link>
-            <span>|</span>
-            <Link href={"/sign-up"}>عضویت</Link>
-          </div>
         </div>
         <div className="sm:hidden flex flex-row gap-[30px] justify-center items-center">
           <MenuIcon size={32} />

@@ -1,11 +1,11 @@
-import { Menu } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 const menuItems = [
   {
     name: "دسته بندی",
-    icon: <Menu />,
+    icon: <ChevronDown />,
     slug: "products",
   },
   {
@@ -14,6 +14,7 @@ const menuItems = [
   },
   {
     name: "برند ها",
+    icon: <ChevronDown />,
     slug: "brands",
   },
   {
@@ -29,12 +30,12 @@ const menuItems = [
 const Categories = () => {
   return (
     <div className="w-full flex justify-start items-center mx-auto ">
-      <ul className="flex gap-8 py-4">
+      <ul className="flex gap-12 py-4">
         {menuItems.map((item) => (
           <li key={item.name} className="-translate-x-3">
             <Link href={`/${item?.slug}`} className="hover:text-zinc-400">
-              <div className="flex flex-row gap-2">
-                {item?.icon} {item.name}
+              <div className="flex flex-row gap-1">
+                {item.name} {item?.icon}
               </div>
             </Link>
           </li>

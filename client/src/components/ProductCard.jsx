@@ -1,8 +1,20 @@
+"use client";
 import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 const ProductCard = ({ product }) => {
+  const [productTypes, setProductTypes] = useState({
+    color: product.colors[0],
+  });
+
+  function handleProductType(type, value) {
+    setProductTypes((prev) => ({
+      ...prev,
+      [type]: value,
+    }));
+  }
   return (
     <div className="rounded-3xl overflow-hidden bg-white flex flex-col p-2 sm:mx-0 sm:px-4 sm:py-4 sm:my-4">
       {/* IMAGE */}
@@ -39,6 +51,18 @@ const ProductCard = ({ product }) => {
           <p className=" font-medium text-zinc-700 line-clamp-1">
             {product.shortDescription}
           </p>
+        </div>
+
+        {/* COLORS */}
+        <div className="flex items-center justify-start gap-1 mt-1">
+          {product.colors.map((color) => (
+            <div key={color}>
+              <div
+                className="w-[14px] h-[14px] rounded-full"
+                style={{ backgroundColor: color }}
+              ></div>
+            </div>
+          ))}
         </div>
 
         {/* PRICE AND ADD BUTTON*/}
