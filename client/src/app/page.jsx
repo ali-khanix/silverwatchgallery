@@ -16,7 +16,7 @@ export default function Home({ searchParams }) {
         />
       </div>
 
-      <section id="features" className="mt-8">
+      {/* <section id="features" className="mt-8">
         <div className="flex justify-center items-center gap-16 mx-auto">
           <div className="flex flex-col justify-center items-center">
             <h3 className="font-bold">ضمانت اصالت</h3>
@@ -33,7 +33,7 @@ export default function Home({ searchParams }) {
             <span className="text-sm font-light">به صورت تخصصی</span>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section id="products" className="mt-10">
         <div className="flex justify-between items-center mx-3 sm:mx-0 mb-4">
