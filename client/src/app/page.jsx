@@ -1,5 +1,6 @@
 import ProductsList from "@/components/ProductsList";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home({ searchParams }) {
   console.log(searchParams);
@@ -35,7 +36,12 @@ export default function Home({ searchParams }) {
       </section>
 
       <section id="products" className="mt-10">
-        <h2 className="font-bold text-[18px] mb-4">تازه های سیلور واچ</h2>
+        <div className="flex justify-between items-center mx-3 sm:mx-0 mb-4">
+          <h2 className="font-bold text-[18px]">تازه های سیلور واچ</h2>
+          <Link href={"/products"} className="underline">
+            مشاهده همه
+          </Link>
+        </div>
         <ProductsList />
       </section>
     </>

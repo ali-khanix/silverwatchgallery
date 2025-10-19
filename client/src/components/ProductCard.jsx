@@ -4,15 +4,15 @@ import Link from "next/link";
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="rounded-3xl overflow-hidden bg-white flex sm:block p-2 gap-4 sm:px-4 sm:py-8">
+    <div className="rounded-3xl overflow-hidden bg-white flex flex-col p-2 sm:mx-0 sm:px-4 sm:py-4 sm:my-4">
       {/* IMAGE */}
       <Link
         href={`/products/${encodeURIComponent(
           product.name.replace(/\s+/g, "-")
         )}`}
-        className="w-[35%]"
+        className="w-full"
       >
-        <div className="relative aspect-[3/4]">
+        <div className="relative aspect-[3/4] sm:aspect-[3/4]">
           <Image
             src={product.images.black}
             alt={product.name}
@@ -30,9 +30,9 @@ const ProductCard = ({ product }) => {
       </Link>
 
       {/* PRODUCT DETAILS */}
-      <div className="flex flex-col gap-2 w-[65%] sm:w-full justify-center sm:block">
+      <div className="flex flex-col gap-2 sm:w-full justify-center sm:block">
         {/* NAME */}
-        <div className="flex flex-col items-center justify-start gap-1">
+        <div className="flex flex-col items-start justify-center gap-1">
           <h1 className="font-medium text-zinc-700 line-clamp-1">
             {product.name}
           </h1>
@@ -42,16 +42,19 @@ const ProductCard = ({ product }) => {
         </div>
 
         {/* PRICE AND ADD BUTTON*/}
-        <div className="flex justify-between sm:mt-4 sm:flex-col items-center sm:gap-4">
-          <div className="flex flex-col">
-            <span className="font-bold">{product.price} تومان</span>
+        <div className="flex justify-center items-start sm:mt-4 flex-col gap-4">
+          <div className="flex flex-col w-full">
+            <span className="font-bold">
+              {product.price.toLocaleString()} تومان
+            </span>
             <span className="line-through text-gray-500">
               {product.offer} تومان
             </span>
           </div>
 
-          <button className="bg-zinc-950 rounded-full p-3 flex items-center justify-center mx-auto cursor-pointer w-14 h-14 sm:w-full sm:h-full">
-            <ShoppingCart color="white" />
+          <button className="bg-zinc-950 rounded-full p-3 flex items-center justify-center  gap-1 mx-auto cursor-pointer w-full sm:h-full text-white hover:bg-zinc-800">
+            <span>افزودن</span>
+            <ShoppingCart />
           </button>
         </div>
       </div>
