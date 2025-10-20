@@ -71,8 +71,8 @@ const Footer = () => {
   return (
     <footer className=" bg-zinc-950">
       <div className="p-8 flex justify-between items-center sm:px-0 sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-6xl mx-auto text-white">
-        <div className="flex flex-row w-full justify-between">
-          <div className="max-w-[25%] flex flex-col gap-2">
+        <div className="flex flex-col gap-8 sm:gap-4 sm:flex-row w-full justify-between">
+          <div className="sm:max-w-[25%] flex flex-col gap-2 border-b-1 sm:border-b-0 pb-2">
             <Link href={"/"}>
               <Image src={"/logo.svg"} width={100} height={100} alt="logo" />
             </Link>
@@ -87,7 +87,10 @@ const Footer = () => {
               <ul className="flex flex-col gap-1">
                 {section.subTitle.map((item) => (
                   <li key={item.value}>
-                    <Link className="text-zinc-500" href={item.link}>
+                    <Link
+                      className="text-zinc-400 hover:text-zinc-500"
+                      href={item.link}
+                    >
                       {item.value}
                     </Link>
                   </li>
