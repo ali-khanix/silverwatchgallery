@@ -16,24 +16,37 @@ export default function Home({ searchParams }) {
         />
       </div>
 
-      {/* <section id="features" className="mt-8">
-        <div className="flex justify-center items-center gap-16 mx-auto">
-          <div className="flex flex-col justify-center items-center">
-            <h3 className="font-bold">ضمانت اصالت</h3>
-            <span className="text-sm font-light">محصولات اورجینال</span>
-          </div>
+      <section id="products" className="mt-10">
+        <div className="flex justify-between items-center mx-3 sm:mx-0 mb-4">
+          <h2 className="font-bold text-[18px]">تازه های سیلور واچ</h2>
+          <Link href={"/products"} className="underline">
+            مشاهده همه
+          </Link>
+        </div>
+        <ProductsList />
+      </section>
 
-          <div className="flex flex-col justify-center items-center">
-            <h3 className="font-bold">ارسال سریع</h3>
-            <span className="text-sm font-light">به سراسر کشور</span>
+      {/* BANNERS */}
+      <section id="banners" className="mt-8 mx-2 sm:mx-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
+          <div className="relative h-[250px] sm:h-[400px] rounded-[20px] overflow-hidden">
+            <Image
+              src={"/images/mens-watch-with-call-to-action-banner.webp"}
+              alt="ساعت های مردانه"
+              fill
+              className="object-cover"
+            />
           </div>
-
-          <div className="flex flex-col justify-center items-center">
-            <h3 className="font-bold">مشاوره خرید</h3>
-            <span className="text-sm font-light">به صورت تخصصی</span>
+          <div className="relative h-[250px] sm:h-[400px] rounded-[20px] overflow-hidden">
+            <Image
+              src={"/images/womens-watch-with-call-to-action-banner.webp"}
+              fill
+              alt="ساعت های مردانه"
+              className="object-cover"
+            />
           </div>
         </div>
-      </section> */}
+      </section>
 
       <section id="products" className="mt-10">
         <div className="flex justify-between items-center mx-3 sm:mx-0 mb-4">
