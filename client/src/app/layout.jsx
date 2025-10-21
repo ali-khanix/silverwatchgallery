@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import Navbar from "@/components/Navbar";
 import { iranYekan } from "../../public/font/iran-yekan-web/fonts";
 import Footer from "@/components/Footer";
@@ -14,7 +16,7 @@ export default function RootLayout({ children }) {
       <body className={`${iranYekan.className} antialiased bg-zinc-100`}>
         <Navbar />
         <div className="mx-auto p-4 pt-[2px] px-0 sm:max-w-xl  md:max-w-2xl lg:max-w-3xl xl:max-w-6xl">
-          {children}
+          <Suspense>{children}</Suspense>
         </div>
         <Footer />
       </body>
