@@ -12,7 +12,7 @@ const products = [
     offer: 4900000,
     colors: ["black", "green", "red"],
     images: {
-      black: "/products/watch-image.jpg",
+      black: "/products/watch-image.png",
     },
   },
   {
@@ -25,7 +25,7 @@ const products = [
     offer: 4900000,
     colors: ["black", "blue"],
     images: {
-      black: "/products/watch-image.jpg",
+      black: "/products/watch-image.png",
     },
   },
   {
@@ -38,7 +38,7 @@ const products = [
     offer: 4900000,
     colors: ["black", "gray"],
     images: {
-      black: "/products/watch-image.jpg",
+      black: "/products/watch-image.png",
     },
   },
   {
@@ -51,7 +51,7 @@ const products = [
     offer: 4900000,
     colors: ["black"],
     images: {
-      black: "/products/watch-image.jpg",
+      black: "/products/watch-image.png",
     },
   },
   {
@@ -64,7 +64,7 @@ const products = [
     offer: 4900000,
     colors: ["black"],
     images: {
-      black: "/products/watch-image.jpg",
+      black: "/products/watch-image.png",
     },
   },
 ];
