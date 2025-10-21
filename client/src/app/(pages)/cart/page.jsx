@@ -1,5 +1,7 @@
 "use client";
 
+import { Suspense } from "react";
+
 import PaymentForm from "@/components/PaymentForm";
 import ShippingForm from "@/components/ShippingForm";
 import { Button } from "@/components/ui/button";
@@ -79,142 +81,146 @@ const CartPage = () => {
   console.log(activeStep);
 
   return (
-    <div className="flex flex-col gap-8 items-center justify-center mt-8">
-      {/* TITLE */}
-      <h1 className="text-2xl font-medium">سبد خرید شما</h1>
+    <Suspense fallback={<div>Loading...</div>}>
+      <div className="flex flex-col gap-8 items-center justify-center mt-8">
+        {/* TITLE */}
+        <h1 className="text-2xl font-medium">سبد خرید شما</h1>
 
-      {/* STEPS */}
-      <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
-        {steps.map((step) => (
-          <div
-            key={step.id}
-            className={`flex items-center justify-start lg:justify-center gap-2 border-b-2 pb-4 ${
-              step.id === activeStep ? "border-zinc-800" : "border-zinc-400"
-            }`}
-          >
-            {/* STEP ID */}
-            <div
-              className={`w-6 h-6 rounded-full flex items-center justify-center font-medium text-white text-sm ${
-                step.id === activeStep ? "bg-zinc-800" : "bg-zinc-400"
-              }`}
-            >
-              {step.id}
-            </div>
-            {/* STEP TITLE */}
-            <p
-              className={`font-medium ${
-                step.id === activeStep ? "text-zinc-800" : "text-zinc-400"
-              }`}
-            >
-              {step.title}
-            </p>
-          </div>
-        ))}
-      </div>
-
-      {/* STEPS & DETAILS */}
-      <div className="w-full flex flex-col gap-8 lg:flex-row">
         {/* STEPS */}
-        <div className="cartSteps w-7/12 bg-zinc-100">
-          {/* SINGLE CART */}
-          {activeStep === 1 ? (
-            cartItems.map((item) => (
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+          {steps.map((step) => (
+            <div
+              key={step.id}
+              className={`flex items-center justify-start lg:justify-center gap-2 border-b-2 pb-4 ${
+                step.id === activeStep ? "border-zinc-800" : "border-zinc-400"
+              }`}
+            >
+              {/* STEP ID */}
               <div
-                key={item.id}
-                className="flex items-center justify-between border-b-2 pb-4 border-zinc-200"
+                className={`w-6 h-6 rounded-full flex items-center justify-center font-medium text-white text-sm ${
+                  step.id === activeStep ? "bg-zinc-800" : "bg-zinc-400"
+                }`}
               >
-                {/* IAMGE AND DETAILS */}
-                <div className="flex gap-8">
-                  {/* IMAGE */}
-                  <div className="relative w-32 h-32 bg-zinc-200 rounded-lg overflow-hidden">
-                    <Image
-                      src={item.images[item.selectedColor]}
-                      fill
-                      className="object-contain"
-                      alt={item.name}
-                    />
-                  </div>
-
-                  {/*ITEM DETAILS */}
-                  <div className="flex flex-col justify-between">
-                    <div className="flex flex-col justify-between">
-                      <p className="font-medium ">
-                        {item.name}
-                        {item.shortDescription}
-                      </p>
-                      <p className="text-zinc-500">رنگ: {item.selectedColor}</p>
-                    </div>
-
-                    <div className="">
-                      <p className="font-medium">
-                        {item.price.toLocaleString()} تومان
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* DELTE BUTTON */}
-                </div>
-                <Button className="w-8 h-8 bg-red-100 rounded-full hover:bg-red-200 transition-all duration-300 text-red-400">
-                  <Trash2 />
-                </Button>
+                {step.id}
               </div>
-            ))
-          ) : activeStep === 2 ? (
-            <ShippingForm />
-          ) : activeStep === 3 && shippingForm ? (
-            <PaymentForm />
-          ) : (
-            <p className="text-sm text-zinc-500">
-              لطفا اطلاعات ارسال برای ادامه کامل پر کنید
-            </p>
-          )}
+              {/* STEP TITLE */}
+              <p
+                className={`font-medium ${
+                  step.id === activeStep ? "text-zinc-800" : "text-zinc-400"
+                }`}
+              >
+                {step.title}
+              </p>
+            </div>
+          ))}
         </div>
 
-        {/* DETAILS */}
-        <div className="cartSteps w-5/12 h-max">
-          <h2 className="">جزئیات خرید</h2>
-          <div className="flex flex-col gap-4">
-            <div className="flex justify-between text-sm">
-              <p className="text-zinc-500">جمع خرید</p>
-              <p className="font-medium">
-                {cartItems
-                  .reduce((acc, cur) => acc + cur.price, 0)
-                  .toLocaleString()}{" "}
-                تومان
-              </p>
-            </div>
-            <div className="flex justify-between text-sm">
-              <p className="text-zinc-500">تخفیف %10</p>
-              <p className="font-medium">10%</p>
-            </div>
-            <div className="flex justify-between text-sm">
-              <p className="text-zinc-500">هزینه ارسال</p>
-              <p className=" font-medium">100,000 تومان</p>
-            </div>
+        {/* STEPS & DETAILS */}
+        <div className="w-full flex flex-col gap-8 lg:flex-row">
+          {/* STEPS */}
+          <div className="cartSteps w-7/12 bg-zinc-100">
+            {/* SINGLE CART */}
+            {activeStep === 1 ? (
+              cartItems.map((item) => (
+                <div
+                  key={item.id}
+                  className="flex items-center justify-between border-b-2 pb-4 border-zinc-200"
+                >
+                  {/* IAMGE AND DETAILS */}
+                  <div className="flex gap-8">
+                    {/* IMAGE */}
+                    <div className="relative w-32 h-32 bg-zinc-200 rounded-lg overflow-hidden">
+                      <Image
+                        src={item.images[item.selectedColor]}
+                        fill
+                        className="object-contain"
+                        alt={item.name}
+                      />
+                    </div>
 
-            <hr className="border-zinc-300" />
+                    {/*ITEM DETAILS */}
+                    <div className="flex flex-col justify-between">
+                      <div className="flex flex-col justify-between">
+                        <p className="font-medium ">
+                          {item.name}
+                          {item.shortDescription}
+                        </p>
+                        <p className="text-zinc-500">
+                          رنگ: {item.selectedColor}
+                        </p>
+                      </div>
 
-            <div className="flex justify-between text-sm">
-              <p className="text-zinc-800 font-semibold">جمع کل</p>
-              <p className="font-medium">
-                {cartItems
-                  .reduce((acc, cur) => acc + cur.price, 0)
-                  .toLocaleString()}{" "}
-                تومان
+                      <div className="">
+                        <p className="font-medium">
+                          {item.price.toLocaleString()} تومان
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* DELTE BUTTON */}
+                  </div>
+                  <Button className="w-8 h-8 bg-red-100 rounded-full hover:bg-red-200 transition-all duration-300 text-red-400">
+                    <Trash2 />
+                  </Button>
+                </div>
+              ))
+            ) : activeStep === 2 ? (
+              <ShippingForm />
+            ) : activeStep === 3 && shippingForm ? (
+              <PaymentForm />
+            ) : (
+              <p className="text-sm text-zinc-500">
+                لطفا اطلاعات ارسال برای ادامه کامل پر کنید
               </p>
-            </div>
+            )}
           </div>
-          <Button
-            onClick={() => router.push("/cart?step=2", { scroll: false })}
-          >
-            <span>ادامه خرید</span>
-            <span>
-              <ChevronLeft />
-            </span>
-          </Button>
+
+          {/* DETAILS */}
+          <div className="cartSteps w-5/12 h-max">
+            <h2 className="">جزئیات خرید</h2>
+            <div className="flex flex-col gap-4">
+              <div className="flex justify-between text-sm">
+                <p className="text-zinc-500">جمع خرید</p>
+                <p className="font-medium">
+                  {cartItems
+                    .reduce((acc, cur) => acc + cur.price, 0)
+                    .toLocaleString()}{" "}
+                  تومان
+                </p>
+              </div>
+              <div className="flex justify-between text-sm">
+                <p className="text-zinc-500">تخفیف %10</p>
+                <p className="font-medium">10%</p>
+              </div>
+              <div className="flex justify-between text-sm">
+                <p className="text-zinc-500">هزینه ارسال</p>
+                <p className=" font-medium">100,000 تومان</p>
+              </div>
+
+              <hr className="border-zinc-300" />
+
+              <div className="flex justify-between text-sm">
+                <p className="text-zinc-800 font-semibold">جمع کل</p>
+                <p className="font-medium">
+                  {cartItems
+                    .reduce((acc, cur) => acc + cur.price, 0)
+                    .toLocaleString()}{" "}
+                  تومان
+                </p>
+              </div>
+            </div>
+            <Button
+              onClick={() => router.push("/cart?step=2", { scroll: false })}
+            >
+              <span>ادامه خرید</span>
+              <span>
+                <ChevronLeft />
+              </span>
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
+    </Suspense>
   );
 };
 
