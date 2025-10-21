@@ -115,7 +115,7 @@ const CartPage = () => {
       {/* STEPS & DETAILS */}
       <div className="w-full flex flex-col gap-8 lg:flex-row">
         {/* STEPS */}
-        <div className="cartSteps w-7/12 bg-zinc-100">
+        <div className="cartSteps mx-4 sm:mx-0 sm:w-7/12 bg-zinc-100">
           {/* SINGLE CART */}
           {activeStep === 1 ? (
             cartItems.map((item) => (
@@ -139,8 +139,7 @@ const CartPage = () => {
                   <div className="flex flex-col justify-between">
                     <div className="flex flex-col justify-between">
                       <p className="font-medium ">
-                        {item.name}
-                        {item.shortDescription}
+                        {item.name} {item.shortDescription}
                       </p>
                       <p className="text-zinc-500">رنگ: {item.selectedColor}</p>
                     </div>
@@ -171,7 +170,7 @@ const CartPage = () => {
         </div>
 
         {/* DETAILS */}
-        <div className="cartSteps w-5/12 h-max">
+        <div className="cartSteps sm:w-5/12 h-max">
           <h2 className="">جزئیات خرید</h2>
           <div className="flex flex-col gap-4">
             <div className="flex justify-between text-sm">
