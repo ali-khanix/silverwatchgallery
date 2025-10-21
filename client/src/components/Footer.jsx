@@ -103,8 +103,8 @@ const Footer = () => {
             <Link href={"https://enamad.ir"}>
               <Image
                 src={"/e-namad-logo.webp"}
-                width={100}
-                height={100}
+                width={140}
+                height={140}
                 alt="logo"
               />
             </Link>
