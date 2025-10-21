@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import { iranYekan } from "../../public/font/iran-yekan-web/fonts";
 import Footer from "@/components/Footer";
 import "./globals.css";
+import { ToastContainer } from "react-toastify";
 
 export const metadata = {
   title: "گالری ساعت سیلور",
@@ -19,6 +20,8 @@ export default function RootLayout({ children }) {
           <Suspense>{children}</Suspense>
         </div>
         <Footer />
+
+        <ToastContainer position="bottom-right" />
       </body>
     </html>
   );

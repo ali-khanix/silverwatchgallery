@@ -1,13 +1,26 @@
 "use client";
+import useCartStore from "@/stores/cartStore";
 import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const ProductCard = ({ product }) => {
   const [productTypes, setProductTypes] = useState({
     color: product.colors[0],
   });
+
+  const { addToCart } = useCartStore();
+
+  const handleAddToCart = () => {
+    addToCart({
+      ...product,
+      selectedColor: productTypes.color,
+    });
+
+    toast.success("محصول به کارت اضافه شد");
+  };
 
   function handleProductType(type, value) {
     setProductTypes((prev) => ({
@@ -76,7 +89,10 @@ const ProductCard = ({ product }) => {
             </span>
           </div>
 
-          <button className="bg-zinc-950 rounded-full p-3 flex items-center justify-center  gap-1 mx-auto cursor-pointer w-full sm:h-full text-white hover:bg-zinc-800">
+          <button
+            onClick={handleAddToCart}
+            className="bg-zinc-950 rounded-full p-3 flex items-center justify-center  gap-1 mx-auto cursor-pointer w-full sm:h-full text-white hover:bg-zinc-800"
+          >
             <span>افزودن</span>
             <ShoppingCart />
           </button>

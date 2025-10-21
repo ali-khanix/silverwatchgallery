@@ -5,6 +5,7 @@ import { ShoppingCart, User } from "lucide-react";
 import { MenuIcon } from "lucide-react";
 import { Search } from "lucide-react";
 import Categories from "./Categories";
+import ShoppingCartIcon from "./ShoppingCartIcon";
 
 {
   /* <div className="mx-auto p-4 sm:px-0 sm:max-w-xl  md:max-w-2xl lg:max-w-3xl xl:max-w-6xl"></div> */
@@ -32,9 +33,7 @@ const Navbar = () => {
 
         {/* LOGIN AND CART BUTTONS */}
         <div className="hidden sm:flex items-center justify-end sm:w-4/12 gap-4">
-          <Link href={"/cart"} className="hover:text-zinc-400">
-            <ShoppingCart size={24} className="" />
-          </Link>
+          <ShoppingCartIcon />
 
           <Link href={"/user"} className="flex gap-1 hover:text-zinc-400">
             <User size={24} />

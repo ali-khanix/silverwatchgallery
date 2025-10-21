@@ -3,6 +3,7 @@
 import PaymentForm from "@/components/PaymentForm";
 import ShippingForm from "@/components/ShippingForm";
 import { Button } from "@/components/ui/button";
+import useCartStore from "@/stores/cartStore";
 import { ChevronLeft } from "lucide-react";
 import { Trash2 } from "lucide-react";
 import Image from "next/image";
@@ -24,50 +25,50 @@ const steps = [
   },
 ];
 
-const cartItems = [
-  {
-    id: 1,
-    name: "کاسیو",
-    shortDescription: "MTP-1381L-1AV",
-    description:
-      "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
-    price: 5200000,
-    offer: 4900000,
-    colors: ["black", "green", "red"],
-    images: {
-      black: "/products/watch-image.png",
-    },
-    selectedColor: "black",
-  },
-  {
-    id: 2,
-    name: "کاسیو",
-    shortDescription: "MTP-1381L-1AV",
-    description:
-      "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
-    price: 5200000,
-    offer: 4900000,
-    colors: ["black", "blue"],
-    images: {
-      black: "/products/watch-image.png",
-    },
-    selectedColor: "black",
-  },
-  {
-    id: 3,
-    name: "کاسیو",
-    shortDescription: "MTP-1381L-1AV",
-    description:
-      "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
-    price: 5200000,
-    offer: 4900000,
-    colors: ["black", "gray"],
-    images: {
-      black: "/products/watch-image.png",
-    },
-    selectedColor: "black",
-  },
-];
+// const cartItems = [
+//   {
+//     id: 1,
+//     name: "کاسیو",
+//     shortDescription: "MTP-1381L-1AV",
+//     description:
+//       "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
+//     price: 5200000,
+//     offer: 4900000,
+//     colors: ["black", "green", "red"],
+//     images: {
+//       black: "/products/watch-image.png",
+//     },
+//     selectedColor: "black",
+//   },
+//   {
+//     id: 2,
+//     name: "کاسیو",
+//     shortDescription: "MTP-1381L-1AV",
+//     description:
+//       "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
+//     price: 5200000,
+//     offer: 4900000,
+//     colors: ["black", "blue"],
+//     images: {
+//       black: "/products/watch-image.png",
+//     },
+//     selectedColor: "black",
+//   },
+//   {
+//     id: 3,
+//     name: "کاسیو",
+//     shortDescription: "MTP-1381L-1AV",
+//     description:
+//       "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
+//     price: 5200000,
+//     offer: 4900000,
+//     colors: ["black", "gray"],
+//     images: {
+//       black: "/products/watch-image.png",
+//     },
+//     selectedColor: "black",
+//   },
+// ];
 
 const CartPage = () => {
   const searchParams = useSearchParams();
@@ -76,7 +77,8 @@ const CartPage = () => {
   const [shippingForm, setShippingForm] = useState(null);
 
   const activeStep = parseInt(searchParams.get("step") || "1");
-  console.log(activeStep);
+
+  const { cart, removeFromCart } = useCartStore();
 
   return (
     <div className="flex flex-col gap-8 items-center justify-center mt-8">
@@ -118,7 +120,7 @@ const CartPage = () => {
         <div className="cartSteps mx-4 sm:mx-0 sm:w-7/12 bg-zinc-100">
           {/* SINGLE CART */}
           {activeStep === 1 ? (
-            cartItems.map((item) => (
+            cart.map((item) => (
               <div
                 key={item.id}
                 className="flex items-center justify-between border-b-2 pb-4 border-zinc-200"
@@ -153,13 +155,16 @@ const CartPage = () => {
 
                   {/* DELTE BUTTON */}
                 </div>
-                <Button className="w-8 h-8 bg-red-100 rounded-full hover:bg-red-200 transition-all duration-300 text-red-400">
+                <Button
+                  onClick={() => removeFromCart(item)}
+                  className="w-8 h-8 bg-red-100 rounded-full hover:bg-red-200 transition-all duration-300 text-red-400"
+                >
                   <Trash2 />
                 </Button>
               </div>
             ))
           ) : activeStep === 2 ? (
-            <ShippingForm />
+            <ShippingForm setShippingForm={setShippingForm} />
           ) : activeStep === 3 && shippingForm ? (
             <PaymentForm />
           ) : (
@@ -176,9 +181,7 @@ const CartPage = () => {
             <div className="flex justify-between text-sm">
               <p className="text-zinc-500">جمع خرید</p>
               <p className="font-medium">
-                {cartItems
-                  .reduce((acc, cur) => acc + cur.price, 0)
-                  .toLocaleString()}{" "}
+                {cart.reduce((acc, cur) => acc + cur.price, 0).toLocaleString()}{" "}
                 تومان
               </p>
             </div>
@@ -196,21 +199,21 @@ const CartPage = () => {
             <div className="flex justify-between text-sm">
               <p className="text-zinc-800 font-semibold">جمع کل</p>
               <p className="font-medium">
-                {cartItems
-                  .reduce((acc, cur) => acc + cur.price, 0)
-                  .toLocaleString()}{" "}
+                {cart.reduce((acc, cur) => acc + cur.price, 0).toLocaleString()}{" "}
                 تومان
               </p>
             </div>
           </div>
-          <Button
-            onClick={() => router.push("/cart?step=2", { scroll: false })}
-          >
-            <span>ادامه خرید</span>
-            <span>
-              <ChevronLeft />
-            </span>
-          </Button>
+          {activeStep === 1 && (
+            <Button
+              onClick={() => router.push("/cart?step=2", { scroll: false })}
+            >
+              <span>ادامه خرید</span>
+              <span>
+                <ChevronLeft />
+              </span>
+            </Button>
+          )}
         </div>
       </div>
     </div>
@@ -218,43 +221,3 @@ const CartPage = () => {
 };
 
 export default CartPage;
-
-cartItems.map((item) => (
-  <div
-    key={item.id}
-    className="flex items-center justify-between border-b-2 pb-4 border-zinc-200"
-  >
-    {/* IAMGE AND DETAILS */}
-    <div className="flex gap-8">
-      {/* IMAGE */}
-      <div className="relative w-32 h-32 bg-zinc-200 rounded-lg overflow-hidden">
-        <Image
-          src={item.images[item.selectedColor]}
-          fill
-          className="object-contain"
-          alt={item.name}
-        />
-      </div>
-
-      {/*ITEM DETAILS */}
-      <div className="flex flex-col justify-between">
-        <div className="flex flex-col justify-between">
-          <p className="font-medium ">
-            {item.name}
-            {item.shortDescription}
-          </p>
-          <p className="text-zinc-500">رنگ: {item.selectedColor}</p>
-        </div>
-
-        <div className="">
-          <p className="font-medium">{item.price.toLocaleString()} تومان</p>
-        </div>
-      </div>
-
-      {/* DELTE BUTTON */}
-    </div>
-    <Button className="w-8 h-8 bg-red-100 rounded-full hover:bg-red-200 transition-all duration-300 text-red-400">
-      <Trash2 />
-    </Button>
-  </div>
-));
