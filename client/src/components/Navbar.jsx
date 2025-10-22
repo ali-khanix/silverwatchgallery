@@ -42,9 +42,7 @@ const Navbar = () => {
         </div>
         <div className="sm:hidden flex flex-row gap-[30px] justify-center items-center">
           <MenuIcon size={32} />
-          <Link href={"/cart"}>
-            <ShoppingCart size={32} className="text-gray-300" />
-          </Link>
+          <ShoppingCartIcon size={32} className="text-gray-300" />
           <Search size={32} />
         </div>
       </div>

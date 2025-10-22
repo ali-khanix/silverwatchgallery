@@ -35,7 +35,7 @@ const ProductCard = ({ product }) => {
       <Link href={`/products/${product.id}`} className="w-full">
         <div className="relative aspect-[3/4] sm:aspect-[3/4]">
           <Image
-            src={product.images.black}
+            src={product.images[productTypes.color]}
             alt={product.name}
             fill
             className="object-cover hover:scale-105 transition-all duration-300"
@@ -51,7 +51,7 @@ const ProductCard = ({ product }) => {
       </Link>
 
       {/* PRODUCT DETAILS */}
-      <div className="flex flex-col gap-2 sm:w-full justify-center sm:block">
+      <div className="flex flex-col py-2 gap-2 sm:w-full justify-center sm:block">
         {/* NAME */}
         <div className="flex flex-col items-start justify-center gap-1">
           <h1 className="font-medium text-zinc-700 line-clamp-1">
@@ -81,7 +81,7 @@ const ProductCard = ({ product }) => {
               {product.price.toLocaleString()} تومان
             </span>
             <span className="line-through text-gray-500">
-              {product.offer} تومان
+              {product.offer.toLocaleString()} تومان
             </span>
           </div>
 

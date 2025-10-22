@@ -69,6 +69,17 @@ const steps = [
 //     selectedColor: "black",
 //   },
 // ];
+const colorTranslations = {
+  blue: "آبی",
+  black: "مشکی",
+  white: "سفید",
+  red: "قرمز",
+  green: "سبز",
+  brown: "قهوه‌ای",
+  gray: "طوسی",
+  gold: "طلایی",
+  silver: "نقره‌ای",
+};
 
 const CartPage = () => {
   const searchParams = useSearchParams();
@@ -144,7 +155,19 @@ const CartPage = () => {
                       <p className="font-medium ">
                         {item.name} {item.shortDescription}
                       </p>
-                      <p className="text-zinc-500">رنگ: {item.selectedColor}</p>
+                      <div className="flex items-center gap-2">
+                        <p className="text-zinc-500">
+                          رنگ:{" "}
+                          {colorTranslations[item.selectedColor] ||
+                            item.selectedColor}
+                        </p>
+
+                        <div
+                          className="w-[14px] h-[14px] rounded-full"
+                          style={{ backgroundColor: item.selectedColor }}
+                        />
+                      </div>
+
                       <p className="text-zinc-500">تعداد: {item.quantity}</p>
                     </div>
 
@@ -181,7 +204,9 @@ const CartPage = () => {
             <div className="flex justify-between text-sm">
               <p className="text-zinc-500">جمع خرید</p>
               <p className="font-medium">
-                {cart.reduce((acc, cur) => acc + cur.price, 0).toLocaleString()}{" "}
+                {cart
+                  .reduce((acc, cur) => acc + cur.price * cur.quantity, 0)
+                  .toLocaleString()}{" "}
                 تومان
               </p>
             </div>
@@ -200,7 +225,8 @@ const CartPage = () => {
               <p className="text-zinc-800 font-semibold">جمع کل</p>
               <p className="font-medium">
                 {(
-                  cart.reduce((acc, cur) => acc + cur.price, 0) * 0.9 +
+                  cart.reduce((acc, cur) => acc + cur.price * cur.quantity, 0) *
+                    0.9 +
                   100000
                 ).toLocaleString()}{" "}
                 تومان
