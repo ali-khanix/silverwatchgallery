@@ -16,6 +16,7 @@ const ProductCard = ({ product }) => {
   const handleAddToCart = () => {
     addToCart({
       ...product,
+      quantity: 1,
       selectedColor: productTypes.color,
     });
 
@@ -31,12 +32,7 @@ const ProductCard = ({ product }) => {
   return (
     <div className="rounded-3xl overflow-hidden bg-white flex flex-col p-2 sm:mx-0 sm:px-4 sm:py-4 sm:my-4">
       {/* IMAGE */}
-      <Link
-        href={`/products/${encodeURIComponent(
-          product.name.replace(/\s+/g, "-")
-        )}`}
-        className="w-full"
-      >
+      <Link href={`/products/${product.id}`} className="w-full">
         <div className="relative aspect-[3/4] sm:aspect-[3/4]">
           <Image
             src={product.images.black}

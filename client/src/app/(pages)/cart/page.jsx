@@ -122,7 +122,7 @@ const CartPage = () => {
           {activeStep === 1 ? (
             cart.map((item) => (
               <div
-                key={item.id}
+                key={item.id + item.selectedColor}
                 className="flex items-center justify-between border-b-2 pb-4 border-zinc-200"
               >
                 {/* IAMGE AND DETAILS */}
@@ -139,18 +139,17 @@ const CartPage = () => {
 
                   {/*ITEM DETAILS */}
                   <div className="flex flex-col justify-between">
-                    <div className="flex flex-col justify-between">
+                    <div className="flex flex-col gap-1 justify-between">
                       <p className="font-medium ">
                         {item.name} {item.shortDescription}
                       </p>
                       <p className="text-zinc-500">رنگ: {item.selectedColor}</p>
+                      <p className="text-zinc-500">تعداد: {item.quantity}</p>
                     </div>
 
-                    <div className="">
-                      <p className="font-medium">
-                        {item.price.toLocaleString()} تومان
-                      </p>
-                    </div>
+                    <p className="font-medium">
+                      {item.price.toLocaleString()} تومان
+                    </p>
                   </div>
 
                   {/* DELTE BUTTON */}
