@@ -77,6 +77,7 @@ const CartPage = () => {
   const [shippingForm, setShippingForm] = useState(null);
 
   const activeStep = parseInt(searchParams.get("step") || "1");
+  const deliveryFee = 100000;
 
   const { cart, removeFromCart } = useCartStore();
 
@@ -190,7 +191,7 @@ const CartPage = () => {
             </div>
             <div className="flex justify-between text-sm">
               <p className="text-zinc-500">هزینه ارسال</p>
-              <p className=" font-medium">100,000 تومان</p>
+              <p className="font-medium">100,000 تومان</p>
             </div>
 
             <hr className="border-zinc-300" />
@@ -198,7 +199,10 @@ const CartPage = () => {
             <div className="flex justify-between text-sm">
               <p className="text-zinc-800 font-semibold">جمع کل</p>
               <p className="font-medium">
-                {cart.reduce((acc, cur) => acc + cur.price, 0).toLocaleString()}{" "}
+                {(
+                  cart.reduce((acc, cur) => acc + cur.price, 0) * 0.9 +
+                  100000
+                ).toLocaleString()}{" "}
                 تومان
               </p>
             </div>
