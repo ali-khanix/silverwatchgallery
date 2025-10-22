@@ -21,13 +21,16 @@ const ProductInteraction = ({ product, selectedColor }) => {
         <div className="flex items-center gap-2">
           {product.colors.map((color) => (
             <div
-              className={`cursor-pointer border-1 p-[2px] ${
-                selectedColor === color ? "border-gray-300" : "border-white"
+              className={`cursor-pointer border-1 rounded-full p-[1px] ${
+                selectedColor === color ? "border-zinc-500" : "border-white"
               }`}
               key={color}
               onClick={() => handleTypeChange("color", color)}
             >
-              <div className={`w-6 h-6`} style={{ backgroundColor: color }} />
+              <div
+                className={`w-6 h-6 rounded-full`}
+                style={{ backgroundColor: color }}
+              />
             </div>
           ))}
         </div>
