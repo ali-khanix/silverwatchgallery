@@ -1,16 +1,44 @@
 "use client";
 
+import useCartStore from "@/stores/cartStore";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
+import { Button } from "./ui/button";
+import { Plus } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
+import { Minus } from "lucide-react";
 
 const ProductInteraction = ({ product, selectedColor }) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCartStore();
+
+  console.log(quantity);
 
   const handleTypeChange = (type, value) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set(type, value);
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
+  };
+
+  const handleQuantityChange = (type) => {
+    if (type === "increment") {
+      setQuantity((prev) => prev + 1);
+    } else {
+      if (quantity > 1) {
+        setQuantity((prev) => prev - 1);
+      }
+    }
+  };
+
+  const handleAddToCart = () => {
+    addToCart({
+      ...product,
+      quantity,
+      selectedColor,
+    });
   };
 
   return (
@@ -37,7 +65,35 @@ const ProductInteraction = ({ product, selectedColor }) => {
       </div>
 
       {/* QUANTITY */}
-      <div className=""></div>
+      <div className="flex flex-col gap-2 text-xs">
+        <span className="text-gray-500">تعداد</span>
+        <div className="flex items-center gap-2">
+          <Button
+            className="border-1 border-gray-300 bg-transparent text-gray-700 hover:text-white"
+            onClick={() => handleQuantityChange("decrement")}
+          >
+            <Minus className="w-4 h-4" />
+          </Button>
+          <span className="text-black">{quantity}</span>
+          <Button
+            className="border-1 border-gray-300 bg-transparent text-gray-700 hover:text-white"
+            onClick={() => handleQuantityChange("increment")}
+          >
+            <Plus className="w-4 h-4" />
+          </Button>
+        </div>
+      </div>
+
+      {/* BUTTONS */}
+      <Button onClick={handleAddToCart}>
+        <Plus />
+        افزودن به سبد
+      </Button>
+
+      <Button className="bg-white text-gray-700 border-1 hover:bg-transparent hover:border-gray-500">
+        <ShoppingCart />
+        خرید این محصول
+      </Button>
     </div>
   );
 };
