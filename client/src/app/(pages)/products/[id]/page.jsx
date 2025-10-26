@@ -23,9 +23,9 @@ const ProductPage = async ({ params, searchParams }) => {
   const selectedColor = color || product.colors[0];
 
   return (
-    <div className="flex flex-col gap-4 lg:flex-row md:gap-12 mt-12">
+    <div className="flex flex-col gap-4 lg:flex-row md:gap-12 mt-12 mx-4">
       {/* IMAGE */}
-      <div className="w-full lg:w-5/12 relative aspect-2/3">
+      <div className="w-full lg:w-5/12 relative aspect-3/3 md:aspect-2/3">
         <Image
           src={product.images[selectedColor]}
           alt={product.name}

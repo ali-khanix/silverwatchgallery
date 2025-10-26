@@ -13,7 +13,7 @@ import ShoppingCartIcon from "./ShoppingCartIcon";
 
 const Navbar = () => {
   return (
-    <nav className="bg-zinc-950 text-white">
+    <nav className="bg-zinc-950 text-white fixed top-0 right-0 z-10 w-full mb-[400px]">
       <div className="px-4 sm:px-0 py-4 flex justify-between items-center sm:max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-6xl mx-auto sm:gap-24 flex-row-reverse sm:flex-row ">
         {/* LOGO */}
         <Link href={"/"} className="sm:mx-auto sm:w-3/12 sm:translate-y-3">
