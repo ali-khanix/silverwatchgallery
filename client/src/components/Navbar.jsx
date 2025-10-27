@@ -6,6 +6,7 @@ import { MenuIcon } from "lucide-react";
 import { Search } from "lucide-react";
 import Categories from "./Categories";
 import ShoppingCartIcon from "./ShoppingCartIcon";
+import MobileNav from "./MobileNav";
 
 {
   /* <div className="mx-auto p-4 sm:px-0 sm:max-w-xl  md:max-w-2xl lg:max-w-3xl xl:max-w-6xl"></div> */
@@ -13,7 +14,7 @@ import ShoppingCartIcon from "./ShoppingCartIcon";
 
 const Navbar = () => {
   return (
-    <nav className="bg-zinc-950 text-white fixed top-0 right-0 z-10 w-full mb-[400px]">
+    <nav className=" bg-zinc-950 text-white sticky top-0 right-0 z-10 w-full">
       <div className="px-4 sm:px-0 py-4 flex justify-between items-center sm:max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-6xl mx-auto sm:gap-24 flex-row-reverse sm:flex-row ">
         {/* LOGO */}
         <Link href={"/"} className="sm:mx-auto sm:w-3/12 sm:translate-y-3">
@@ -40,8 +41,10 @@ const Navbar = () => {
             <span className="text-sm">ورود یا عضو شوید</span>
           </Link>
         </div>
+
+        {/* MOBILE NAV */}
         <div className="sm:hidden flex flex-row gap-[30px] justify-center items-center">
-          <MenuIcon size={32} />
+          <MobileNav />
           <ShoppingCartIcon size={32} className="text-gray-300" />
           <Search size={32} />
         </div>
