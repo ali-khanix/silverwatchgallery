@@ -1,9 +1,9 @@
 import { SearchIcon } from "lucide-react";
 import { Input } from "./ui/input";
 
-const SearchBar = () => {
+const SearchBar = ({ display }) => {
   return (
-    <div className="relative w-full hidden sm:flex">
+    <div className={`relative w-full ${display} sm:flex`}>
       <SearchIcon className="absolute right-3 top-1/2 -translate-y-1/2 " />
       <Input
         placeholder={"جستجو..."}
