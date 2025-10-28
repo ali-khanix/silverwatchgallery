@@ -1,6 +1,11 @@
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
+
 import { iranYekan } from "@/public/font/iran-yekan-web/fonts";
 
 import "./globals.css";
+import AppSidebar from "@/components/AppSidebar";
+import Navbar from "@/components/Navbar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 export const metadata = {
   title: "پنل ادمین گالری ساعت سیلور",
@@ -11,9 +16,22 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="fa" dir="rtl">
+    <html lang="fa" dir="rtl" suppressHydrationWarning>
       <body className={`${iranYekan.className} antialiased flex`}>
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <SidebarProvider>
+            <AppSidebar />
+            <main className="w-full">
+              <Navbar />
+              <div className="px-4">{children}</div>
+            </main>
+          </SidebarProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
