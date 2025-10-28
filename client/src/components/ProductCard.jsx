@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, offer }) => {
   const [productTypes, setProductTypes] = useState({
     color: product.colors[0],
   });
@@ -82,11 +82,13 @@ const ProductCard = ({ product }) => {
         {/* PRICE AND ADD BUTTON*/}
         <div className="flex justify-center items-start sm:mt-4 flex-col gap-4">
           <div className="flex flex-col w-full">
+            {offer && (
+              <span className="line-through text-gray-500">
+                {product.offer.toLocaleString()} تومان
+              </span>
+            )}
             <span className="font-bold">
               {product.price.toLocaleString()} تومان
-            </span>
-            <span className="line-through text-gray-500">
-              {product.offer.toLocaleString()} تومان
             </span>
           </div>
 

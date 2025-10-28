@@ -50,12 +50,12 @@ export default function Home({ searchParams }) {
 
       <section id="products" className="mt-10">
         <div className="flex justify-between items-center mx-3 sm:mx-0 mb-4">
-          <h2 className="font-bold text-[18px]">تازه های سیلور واچ</h2>
+          <h2 className="font-bold text-[18px]">ساعت های دارای تخفیف</h2>
           <Link href={"/products"} className="underline">
             مشاهده همه
           </Link>
         </div>
-        <ProductsList />
+        <ProductsList offer={"4200000"} />
       </section>
     </>
   );
