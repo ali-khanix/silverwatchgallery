@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 
 const Homepage = () => {
-  return <Button>ثبت</Button>;
+  return;
 };
 
 export default Homepage;
