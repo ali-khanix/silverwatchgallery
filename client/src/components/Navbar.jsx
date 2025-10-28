@@ -1,17 +1,11 @@
 import Image from "next/image";
 import SearchBar from "./SearchBar";
 import Link from "next/link";
-import { ShoppingCart, User } from "lucide-react";
-import { MenuIcon } from "lucide-react";
-import { Search } from "lucide-react";
+import { User } from "lucide-react";
+
 import Categories from "./Categories";
 import ShoppingCartIcon from "./ShoppingCartIcon";
 import MobileNav from "./MobileNav";
-import { Input } from "./ui/input";
-
-{
-  /* <div className="mx-auto p-4 sm:px-0 sm:max-w-xl  md:max-w-2xl lg:max-w-3xl xl:max-w-6xl"></div> */
-}
 
 const Navbar = () => {
   return (
@@ -49,7 +43,6 @@ const Navbar = () => {
           <ShoppingCartIcon size={32} className="text-gray-300" />
         </div>
       </div>
-      <SearchBar display={"block"} />
 
       <div className="hidden sm:flex justify-between items-center sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-6xl mx-auto sm:gap-24 flex-row-reverse sm:flex-row ">
         <Categories />

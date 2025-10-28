@@ -1,7 +1,8 @@
+"use client";
+
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -15,8 +16,9 @@ import {
 import { MenuIcon } from "lucide-react";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
-import Categories from "./Categories";
+
 import { Watch } from "lucide-react";
+import { useState } from "react";
 
 const categories = [
   {
@@ -41,12 +43,17 @@ const categories = [
 ];
 
 const MobileNav = () => {
+  const [open, setOpen] = useState(false);
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger>
         <MenuIcon size={32} />
       </SheetTrigger>
       <SheetContent className={"bg-zinc-200 px-4"}>
+        <SheetHeader className={"hidden"}>
+          <SheetTitle>منو</SheetTitle> {/* ✅ Add a title */}
+        </SheetHeader>
+
         <ul className="flex flex-col gap-4 mt-4">
           <Collapsible>
             <CollapsibleTrigger className={"mt-14 flex justify-between w-full"}>
@@ -65,12 +72,13 @@ const MobileNav = () => {
                       <ChevronDown className="h-4 w-4 transition-transform data-[state=open]:rotate-180" />
                     </CollapsibleTrigger>
 
-                    <CollapsibleContent className="mt-2 ml-4 flex flex-col gap-1 text-sm text-zinc-700">
+                    <CollapsibleContent className="mt-2 ml-4 flex flex-col gap-3 text-sm text-zinc-700">
                       {category.catDetails.map((cat) => (
                         <Link
                           key={cat.slug}
-                          href={`/${cat.slug}`}
+                          href={`/product-cat/${cat.slug}`}
                           className="hover:text-zinc-900"
+                          onClick={() => setOpen(false)}
                         >
                           {cat.title}
                         </Link>
@@ -81,10 +89,16 @@ const MobileNav = () => {
               </div>
             </CollapsibleContent>
           </Collapsible>
-          <li>کالکشن ها</li>
-          <li>برند ها</li>
-          <li>تخفیف ها</li>
-          <li>تماس با ما</li>
+
+          <Link onClick={() => setOpen(false)} href={"/brands"}>
+            برند ها
+          </Link>
+          <Link onClick={() => setOpen(false)} href={"/offers"}>
+            تخفیف ها
+          </Link>
+          <Link onClick={() => setOpen(false)} href={"/call-us"}>
+            تماس با ما
+          </Link>
         </ul>
       </SheetContent>
     </Sheet>
