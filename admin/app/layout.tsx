@@ -6,15 +6,18 @@ import "./globals.css";
 import AppSidebar from "@/components/AppSidebar";
 import Navbar from "@/components/Navbar";
 import { SidebarProvider } from "@/components/ui/sidebar";
+import { cookies } from "next/headers";
 
 export const metadata = {
   title: "پنل ادمین گالری ساعت سیلور",
   description: "فروشگاه ساعت های مردانه و زنانه",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const cookieStore = await cookies();
+  const defaultOpen = cookieStore.get("sidebar_state")?.value === "true";
   return (
     <html lang="fa" dir="rtl" suppressHydrationWarning>
       <body className={`${iranYekan.className} antialiased flex`}>
@@ -24,7 +27,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SidebarProvider>
+          <SidebarProvider defaultOpen={defaultOpen}>
             <AppSidebar />
             <main className="w-full">
               <Navbar />
