@@ -43,7 +43,7 @@ const AppBarChart = () => {
         />
         <YAxis
           tickLine={false}
-          tickMargin={10}
+          tickMargin={40}
           axisLine={false}
           orientation="right"
         />

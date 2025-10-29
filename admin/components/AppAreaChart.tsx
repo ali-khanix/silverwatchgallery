@@ -42,7 +42,7 @@ const chartConfig = {
 
 export function AppAreaChart() {
   return (
-    <Card>
+    <Card className="border-0">
       <CardHeader>
         <CardTitle>نمودار سطحی - گرادیانت</CardTitle>
         <CardDescription>
