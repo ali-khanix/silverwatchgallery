@@ -1,6 +1,5 @@
 import {
   Calendar,
-  ChevronDown,
   ChevronUp,
   Home,
   Inbox,
@@ -29,11 +28,7 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "./ui/collapsible";
+
 import Image from "next/image";
 import {
   DropdownMenu,
@@ -145,7 +140,7 @@ const AppSidebar = () => {
                     <SidebarMenuSubButton asChild>
                       <Link href={"/#"}>
                         <Plus />
-                        اضافه کردن پروژه
+                        اضافه کردن سته بندی
                       </Link>
                     </SidebarMenuSubButton>
                   </SidebarMenuSubItem>
