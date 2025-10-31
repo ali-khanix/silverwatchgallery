@@ -1,4 +1,5 @@
 import CardList from "@/components/CardList";
+import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -7,6 +8,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
 
 import {
   HoverCard,
@@ -17,6 +19,16 @@ import {
 import { Progress } from "@/components/ui/progress";
 
 import { BadgeCheck, Candy, Citrus, Shield } from "lucide-react";
+
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import EditUser from "@/components/EditUser";
 
 const SingeUserPage = () => {
   return (
@@ -99,12 +111,38 @@ const SingeUserPage = () => {
 
           {/* INFORMATION CONTAINER */}
           <div className="bg-primary-foreground p-4 rounded-lg">
-            <h1 className="text-xl font-semibold">مشخصات کاربر</h1>
+            <div className="flex justify-between items-center">
+              <h1 className="text-xl font-semibold">مشخصات کاربر</h1>
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button>ویرایش</Button>
+                </SheetTrigger>
+                <EditUser />
+              </Sheet>
+            </div>
             <div className="space-y-4 mt-4">
               <div className="flex flex-col gap-2 mb-8">
                 <p className="text-sm text-foreground">مشخصات تکمیلی کاربر</p>
                 <Progress value={66} />
               </div>
+
+              <div className="flex items-center gap-2">
+                <span className="font-bold">نام کاربری:</span>
+                <span className="">علیرضا محمدی</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="font-bold">ایمیل:</span>
+                <span className="">alireza@gmail.com</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="font-bold">شماره موبایل:</span>
+                <span className="">09121234567</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="font-bold">نقش:</span>
+                <Badge>ادمین</Badge>
+              </div>
+              <p className="text-muted-foreground">عضو در تاریخ 1404/10/10</p>
             </div>
           </div>
 

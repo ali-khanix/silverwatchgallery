@@ -11,11 +11,12 @@ const Homepage = () => {
         <AppBarChart />
       </div>
       <div className="bg-primary-foreground p-4 rounded-lg">
-        <AppPieChart />
-      </div>
-      <div className="bg-primary-foreground p-4 rounded-lg">
         <CardList title="محتوای محبوب" />
       </div>
+      <div className="bg-primary-foreground p-4 rounded-lg">
+        <AppPieChart />
+      </div>
+
       <div className="bg-primary-foreground p-4 rounded-lg">
         <TodoList />
       </div>
