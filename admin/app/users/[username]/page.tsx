@@ -20,15 +20,10 @@ import { Progress } from "@/components/ui/progress";
 
 import { BadgeCheck, Candy, Citrus, Shield } from "lucide-react";
 
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import EditUser from "@/components/EditUser";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import LineChartMultiple from "@/components/LineChartMultiple";
 
 const SingeUserPage = () => {
   return (
@@ -142,7 +137,9 @@ const SingeUserPage = () => {
                 <span className="font-bold">نقش:</span>
                 <Badge>ادمین</Badge>
               </div>
-              <p className="text-muted-foreground">عضو در تاریخ 1404/10/10</p>
+              <p className="text-muted-foreground">
+                عضو شده در تاریخ 1404/10/10
+              </p>
             </div>
           </div>
 
@@ -155,10 +152,28 @@ const SingeUserPage = () => {
         {/* RIGHT */}
         <div className="w-full xl:w-2/3 space-y-6">
           {/* USER CARD CONTAINER */}
-          <div className="bg-primary-foreground p-4 rounded-lg">کارت کاربر</div>
+          <div className="bg-primary-foreground p-4 rounded-lg space-y-2">
+            <div className="flex items-center gap-4">
+              <Avatar className="size-12">
+                <AvatarImage src="https://github.com/shadcn.png" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+
+              <h1 className="text-xl font-semibold">علیرضا محمدی</h1>
+            </div>
+            <p className="text-muted-foreground  text-sm">
+              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
+              استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
+              در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
+              نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد
+            </p>
+          </div>
 
           {/* CHART CONTAINER */}
-          <div className="bg-primary-foreground p-4 rounded-lg">چارت</div>
+          <div className="bg-primary-foreground p-4 rounded-lg space-y-4">
+            <h2>فعالیت های کاربر</h2>
+            <LineChartMultiple />
+          </div>
         </div>
       </div>
     </div>

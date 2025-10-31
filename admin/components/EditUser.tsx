@@ -21,6 +21,15 @@ import {
 } from "./ui/form";
 import { Input } from "./ui/input";
 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Button } from "./ui/button";
+
 const formSchema = z.object({
   username: z
     .string()
@@ -47,7 +56,7 @@ const EditUser = () => {
     <SheetContent side="left">
       <SheetHeader className="">
         <SheetTitle className="mb-4">ویرایش اطلاعات کاربر</SheetTitle>
-        <SheetDescription>
+        <SheetDescription asChild>
           <Form {...form}>
             <form className="space-y-8">
               <FormField
@@ -121,7 +130,17 @@ const EditUser = () => {
                 render={(field) => (
                   <FormItem>
                     <FormLabel>نقش</FormLabel>
-                    <FormControl></FormControl>
+                    <FormControl>
+                      <Select>
+                        <SelectTrigger>
+                          <SelectValue placeholder="نقش" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="admin">ادمین</SelectItem>
+                          <SelectItem value="user">کاربر</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
                     <FormDescription>
                       فقط کاربران تایید شده میتوانند ادمین باشند
                     </FormDescription>
@@ -129,6 +148,8 @@ const EditUser = () => {
                   </FormItem>
                 )}
               />
+
+              <Button>ثبت</Button>
             </form>
           </Form>
         </SheetDescription>

@@ -49,7 +49,7 @@ const latestTransactions = [
   {
     id: 1,
     title: "تمدید اشتراک",
-    badge: "جان دو",
+    badge: "علیرضا محمدی",
     image:
       "https://img.freepik.com/free-photo/close-up-portrait-attractive-man-with-afro-hairstyle-stubble-wears-orange-anorak_273609-8595.jpg?semt=ais_hybrid&w=740&q=80",
     count: 1400,
@@ -57,7 +57,7 @@ const latestTransactions = [
   {
     id: 2,
     title: "پرداخت برای خدمات",
-    badge: "جین اسمیت",
+    badge: "زهرا صادقی",
     image:
       "https://img.freepik.com/free-psd/medium-shot-smiley-man-posing_23-2150454306.jpg?semt=ais_hybrid&w=740&q=80",
     count: 2100,
@@ -65,7 +65,7 @@ const latestTransactions = [
   {
     id: 3,
     title: "تمدید اشتراک",
-    badge: "مایکل جانسون",
+    badge: "مهدی خانی",
     image:
       "https://img.freepik.com/free-psd/portrait-man-teenager-isolated_23-2151745771.jpg?semt=ais_hybrid&w=740&q=80",
     count: 1300,
@@ -73,7 +73,7 @@ const latestTransactions = [
   {
     id: 4,
     title: "پرداخت برای خدمات",
-    badge: "لیلی آدامز",
+    badge: "درسا طاهری",
     image:
       "https://img.freepik.com/premium-psd/white-tshirt-mockup-tee-design-merch-showcase-template-unisex-streetwear-aesthetic-branding_883241-55444.jpg?semt=ais_hybrid&w=740&q=80",
     count: 2500,
@@ -81,7 +81,7 @@ const latestTransactions = [
   {
     id: 5,
     title: "تمدید اشتراک",
-    badge: "سم براون",
+    badge: "درسا طاهری",
     image:
       "https://img.freepik.com/premium-psd/white-tshirt-mockup-tee-design-merch-showcase-template-unisex-streetwear-aesthetic-branding_883241-55444.jpg?semt=ais_hybrid&w=740&q=80",
     count: 1400,
