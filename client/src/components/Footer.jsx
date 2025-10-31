@@ -27,7 +27,7 @@ const footerLinks = [
     title: "لینک های کاربران",
     subTitle: [
       {
-        value: "ساعت های مردان",
+        value: "ساعت های مردانه",
         link: "/products/mens-watches",
       },
       {
@@ -43,7 +43,7 @@ const footerLinks = [
         link: "/products/automatic-watches",
       },
       {
-        value: "ساعت داری تخفیف",
+        value: "ساعت های داری تخفیف",
         link: "/offers",
       },
     ],
