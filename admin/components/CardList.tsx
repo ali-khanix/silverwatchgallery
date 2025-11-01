@@ -30,7 +30,7 @@ const popularProducts = [
     gender: "men",
     colors: ["blue"],
     images: {
-      blue: "./../public/",
+      blue: "/products/WWOOr-quartz.webp",
     },
   },
   {
@@ -133,12 +133,12 @@ const CardList = ({ title }: { title: string }) => {
                 className="flex flex-row p-2 items-center justify-between"
               >
                 <div className="w-12 h-12 rounded-sm relative overflow-hidden">
-                  {/* <Image
+                  <Image
                     src={Object.values(item.images)[0] || ""}
                     alt={item.name}
                     fill
                     className="object-cover"
-                  /> */}
+                  />
                 </div>
 
                 <CardContent className="flex-1 p-0">
@@ -165,11 +165,11 @@ const CardList = ({ title }: { title: string }) => {
 
                 <CardContent className="flex-1 p-0">
                   <CardTitle className="text-sm font-medium flex flex-col gap-2">
-                    <span>{item.title}k</span>
+                    <span>{item.title}</span>
                   </CardTitle>
                   <Badge variant={"secondary"}>{item.badge}</Badge>
                 </CardContent>
-                <CardFooter>{item.count} تومان</CardFooter>
+                <CardFooter>{item.count / 1000}k</CardFooter>
               </Card>
             ))}
       </div>
