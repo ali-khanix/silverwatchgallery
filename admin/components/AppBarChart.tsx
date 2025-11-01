@@ -8,52 +8,58 @@ import {
   type ChartConfig,
 } from "@/components/ui/chart";
 import { Bar, BarChart, XAxis, YAxis } from "recharts";
+import { Card, CardHeader, CardTitle } from "./ui/card";
 
 const chartData = [
-  { month: "فروردین", desktop: 186, mobile: 80 },
-  { month: "اردیبهشت", desktop: 305, mobile: 200 },
-  { month: "خرداد", desktop: 237, mobile: 120 },
-  { month: "تیر", desktop: 73, mobile: 190 },
-  { month: "مرداد", desktop: 209, mobile: 130 },
-  { month: "شهریور", desktop: 214, mobile: 140 },
+  { month: "فروردین", total: 186, successful: 80 },
+  { month: "اردیبهشت", total: 305, successful: 200 },
+  { month: "خرداد", total: 237, successful: 120 },
+  { month: "تیر", total: 173, successful: 130 },
+  { month: "مرداد", total: 209, successful: 130 },
+  { month: "شهریور", total: 214, successful: 140 },
 ];
 
 const chartConfig = {
-  desktop: {
-    label: "دسکتاپ",
+  total: {
+    label: "جمع کل",
     color: "var(--chart-1)",
   },
-  mobile: {
-    label: "موبایل",
+  successful: {
+    label: "موفق",
     color: "var(--chart-4)",
   },
 } satisfies ChartConfig;
 
 const AppBarChart = () => {
   return (
-    <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
-      <BarChart accessibilityLayer data={chartData}>
-        <XAxis
-          dataKey="month"
-          tickLine={false}
-          tickMargin={10}
-          axisLine={false}
-          tickFormatter={(value) => value.slice(0, 10)}
-          reversed
-        />
-        <YAxis
-          tickLine={false}
-          tickMargin={40}
-          axisLine={false}
-          orientation="right"
-        />
-        <ChartTooltip content={<ChartTooltipContent />} />
-        <ChartLegend content={<ChartLegendContent />} />
+    <Card>
+      <CardHeader>
+        <CardTitle>مجموع در آمدها</CardTitle>
+      </CardHeader>
+      <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+        <BarChart accessibilityLayer data={chartData}>
+          <XAxis
+            dataKey="month"
+            tickLine={false}
+            tickMargin={10}
+            axisLine={false}
+            tickFormatter={(value) => value.slice(0, 10)}
+            reversed
+          />
+          <YAxis
+            tickLine={false}
+            tickMargin={40}
+            axisLine={false}
+            orientation="right"
+          />
+          <ChartTooltip content={<ChartTooltipContent />} />
+          <ChartLegend content={<ChartLegendContent />} />
 
-        <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-        <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
-      </BarChart>
-    </ChartContainer>
+          <Bar dataKey="total" fill="var(--color-total)" radius={4} />
+          <Bar dataKey="successful" fill="var(--color-successful)" radius={4} />
+        </BarChart>
+      </ChartContainer>
+    </Card>
   );
 };
 
