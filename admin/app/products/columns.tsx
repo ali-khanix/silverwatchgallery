@@ -1,6 +1,5 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { ColumnDef } from "@tanstack/react-table";
 
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
@@ -16,17 +15,21 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
+import Image from "next/image";
 
-export type Payment = {
-  id: string;
-  amount: number;
-  fullName: string;
-  userId: string;
-  email: string;
-  status: "در حال ارسال" | "در حال پردازش" | "موفق" | "ناموفق";
+export type Product = {
+  id: string | number;
+  name: string;
+  price: number;
+  offer: number;
+  gender: string;
+  shortDescription: string;
+  description: string;
+  colors: string[];
+  images: Record<string, string>;
 };
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<Product>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -46,64 +49,49 @@ export const columns: ColumnDef<Payment>[] = [
     ),
   },
   {
-    accessorKey: "fullName",
-    header: "کاربر",
+    accessorKey: "image",
+    header: "عکس",
   },
   {
-    accessorKey: "email",
+    accessorKey: "avatar",
+    header: "آواتار",
+    cell: ({ row }) => {
+      const product = row.original;
+      return (
+        <div className="w-9 h-9 relative">
+          <Image
+            src={product.images[product.colors[0]]}
+            alt={product.name}
+            fill
+            className="rounded-full object-cover"
+          />
+        </div>
+      );
+    },
+  },
+  {
+    accessorKey: "name",
+    header: "اسم",
+  },
+  {
+    accessorKey: "price",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          ایمیل
+          قیمت
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
   },
-
   {
-    accessorKey: "status",
-    header: "وضعیت",
-    cell: ({ row }) => {
-      const status = row.getValue("status");
-
-      return (
-        <div
-          className={cn(
-            `p-1 rounded-md w-max text-xs`,
-            status === "در حال ارسال" && "bg-yellow-500/40",
-            status === "موفق" && "bg-green-500/40",
-            status === "ناموفق" && "bg-red-500/40"
-          )}
-        >
-          {status as string}
-        </div>
-      );
-    },
+    accessorKey: "shortDescription",
+    header: "توضیحات",
   },
 
-  {
-    accessorKey: "amount",
-    header: () => <div className="text-right">مقدار (تومان)</div>,
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
-
-      // ✅ Convert Rial → Toman
-      const tomanValue = amount / 10;
-
-      // ✅ Format with Persian digits and thousand separators
-      const formatted = new Intl.NumberFormat("fa-IR").format(tomanValue);
-
-      return (
-        <div className="text-right font-medium">
-          {formatted} <span className="text-muted-foreground">تومان</span>
-        </div>
-      );
-    },
-  },
   {
     id: "actions",
     size: 40,

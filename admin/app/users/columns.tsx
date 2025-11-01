@@ -16,17 +16,17 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
+import Image from "next/image";
 
-export type Payment = {
+export type User = {
   id: string;
-  amount: number;
+  avatar: string;
   fullName: string;
-  userId: string;
   email: string;
-  status: "در حال ارسال" | "در حال پردازش" | "موفق" | "ناموفق";
+  status: "فعال" | "غیرفعال";
 };
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<User>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -48,6 +48,23 @@ export const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: "fullName",
     header: "کاربر",
+  },
+  {
+    accessorKey: "avatar",
+    header: "آواتار",
+    cell: ({ row }) => {
+      const user = row.original;
+      return (
+        <div className="w-9 h-9 relative">
+          <Image
+            src={user.avatar}
+            alt={user.fullName}
+            fill
+            className="rounded-full object-cover"
+          />
+        </div>
+      );
+    },
   },
   {
     accessorKey: "email",
@@ -74,9 +91,9 @@ export const columns: ColumnDef<Payment>[] = [
         <div
           className={cn(
             `p-1 rounded-md w-max text-xs`,
-            status === "در حال ارسال" && "bg-yellow-500/40",
-            status === "موفق" && "bg-green-500/40",
-            status === "ناموفق" && "bg-red-500/40"
+
+            status === "فعال" && "bg-green-500/40",
+            status === "غیرفعال" && "bg-red-500/40"
           )}
         >
           {status as string}
@@ -86,29 +103,10 @@ export const columns: ColumnDef<Payment>[] = [
   },
 
   {
-    accessorKey: "amount",
-    header: () => <div className="text-right">مقدار (تومان)</div>,
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
-
-      // ✅ Convert Rial → Toman
-      const tomanValue = amount / 10;
-
-      // ✅ Format with Persian digits and thousand separators
-      const formatted = new Intl.NumberFormat("fa-IR").format(tomanValue);
-
-      return (
-        <div className="text-right font-medium">
-          {formatted} <span className="text-muted-foreground">تومان</span>
-        </div>
-      );
-    },
-  },
-  {
     id: "actions",
     size: 40,
     cell: ({ row }) => {
-      const payment = row.original;
+      const user = row.original;
 
       return (
         <div>
@@ -125,15 +123,14 @@ export const columns: ColumnDef<Payment>[] = [
               </DropdownMenuLabel>
               <DropdownMenuItem
                 className="justify-end"
-                onClick={() => navigator.clipboard.writeText(payment.id)}
+                onClick={() => navigator.clipboard.writeText(user.id)}
               >
-                کپی کردن کد پرداخت
+                کپی کردن آیدی کاربر{" "}
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem className="justify-end">
-                <Link href={`/users/${payment.userId}`}>نمایش مشتری</Link>
+                <Link href={`/users/${user.id}`}>نمایش مشتری</Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>نمایش جزئیات پرداخت</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
