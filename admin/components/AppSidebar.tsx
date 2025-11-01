@@ -8,6 +8,7 @@ import {
   Search,
   Settings,
   User2,
+  Watch,
 } from "lucide-react";
 
 import {
@@ -104,9 +105,9 @@ const AppSidebar = () => {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>پروژه ها</SidebarGroupLabel>
+          <SidebarGroupLabel>محصولات</SidebarGroupLabel>
           <SidebarGroupAction title="Add Project">
-            <Plus /> <span className="sr-only">اضافه کردن پروژه</span>
+            <Plus /> <span className="sr-only">اضافه کردن محصول</span>
             <SidebarGroupContent></SidebarGroupContent>
           </SidebarGroupAction>
           <SidebarGroupContent>
@@ -114,8 +115,21 @@ const AppSidebar = () => {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Link href={"/#"}>
-                    <Projector />
-                    مشاهده پروژه ها
+                    <Watch />
+                    همه ی محصول ها{" "}
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href={"/#"}>
+                    <Plus />
+                    اضافه کردن محصول
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>

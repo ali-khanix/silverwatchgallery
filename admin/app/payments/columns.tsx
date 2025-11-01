@@ -131,7 +131,7 @@ export const columns: ColumnDef<Payment>[] = [
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem className="justify-end">
-                <Link href={`/users/${payment.userId}`}>نمایش مشتری</Link>
+                <Link href={`/payments/${payment.userId}`}>نمایش مشتری</Link>
               </DropdownMenuItem>
               <DropdownMenuItem>نمایش جزئیات پرداخت</DropdownMenuItem>
             </DropdownMenuContent>

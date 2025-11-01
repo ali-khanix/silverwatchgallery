@@ -96,7 +96,7 @@ export const columns: ColumnDef<Product>[] = [
     id: "actions",
     size: 40,
     cell: ({ row }) => {
-      const payment = row.original;
+      const product = row.original;
 
       return (
         <div>
@@ -113,15 +113,16 @@ export const columns: ColumnDef<Product>[] = [
               </DropdownMenuLabel>
               <DropdownMenuItem
                 className="justify-end"
-                onClick={() => navigator.clipboard.writeText(payment.id)}
+                onClick={() =>
+                  navigator.clipboard.writeText(product.id.toString())
+                }
               >
                 کپی کردن کد پرداخت
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem className="justify-end">
-                <Link href={`/users/${payment.userId}`}>نمایش مشتری</Link>
+                <Link href={`/products/${product.id}`}>نمایش محصول</Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>نمایش جزئیات پرداخت</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
