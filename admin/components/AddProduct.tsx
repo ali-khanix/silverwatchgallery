@@ -30,6 +30,8 @@ import {
 } from "@/components/ui/select";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
+import { Checkbox } from "./ui/checkbox";
+import { ScrollArea } from "./ui/scroll-area";
 
 const cateogries = ["ساعت مچی مردانه", "ساعت مچی زنانه"] as const;
 
@@ -49,7 +51,6 @@ const colors = [
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "اسم محصول الزامیست" }),
-
   shortDescription: z
     .string()
     .min(10, { message: "توضیح مختصر محصول الزامیست" })
@@ -67,101 +68,153 @@ const AddProduct = () => {
   });
   return (
     <SheetContent side="left">
-      <SheetHeader className="">
-        <SheetTitle className="mb-4">اضافه کردن محصول</SheetTitle>
-        <SheetDescription asChild>
-          <Form {...form}>
-            <form className="space-y-8">
-              <FormField
-                control={form.control}
-                name="name"
-                render={(field) => (
-                  <FormItem>
-                    <FormLabel>اسم محصول</FormLabel>
-                    <FormControl>
-                      <Input placeholder="" {...field} />
-                    </FormControl>
-                    <FormDescription>اسم محصول را وارد کنید</FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+      <ScrollArea className="h-screen">
+        <SheetHeader className="">
+          <SheetTitle className="mb-4">اضافه کردن محصول</SheetTitle>
+          <SheetDescription asChild>
+            <Form {...form}>
+              <form className="space-y-8">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={(field) => (
+                    <FormItem>
+                      <FormLabel>اسم محصول</FormLabel>
+                      <FormControl>
+                        <Input placeholder="" {...field} />
+                      </FormControl>
+                      <FormDescription>اسم محصول را وارد کنید</FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-              <FormField
-                control={form.control}
-                name="shortDescription"
-                render={(field) => (
-                  <FormItem>
-                    <FormLabel>توضیح مختصر</FormLabel>
-                    <FormControl>
-                      <Input placeholder="" {...field} />
-                    </FormControl>
-                    <FormDescription>
-                      توضیح مختصر محصول را وارد کنید
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="description"
-                render={(field) => (
-                  <FormItem>
-                    <FormLabel>توضیح محصول</FormLabel>
-                    <FormControl>
-                      <Textarea placeholder="" {...field} />
-                    </FormControl>
-                    <FormDescription>توضیح محصول را وارد کنید</FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="price"
-                render={(field) => (
-                  <FormItem>
-                    <FormLabel>قیمت</FormLabel>
-                    <FormControl>
-                      <Input type="number" {...field} />
-                    </FormControl>
-                    <FormDescription>قیمت محصول را وارد کنید</FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="category"
-                render={(field) => (
-                  <FormItem>
-                    <FormLabel>دسته بندی</FormLabel>
-                    <FormControl>
-                      <Select>
-                        <SelectTrigger>
-                          <SelectValue placeholder="یک دسته بندی را انتخاب کنید" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {cateogries.map((cat) => (
-                            <SelectItem key={cat} value={cat}>
-                              {cat}
-                            </SelectItem>
+                <FormField
+                  control={form.control}
+                  name="shortDescription"
+                  render={(field) => (
+                    <FormItem>
+                      <FormLabel>توضیح مختصر</FormLabel>
+                      <FormControl>
+                        <Input placeholder="" {...field} />
+                      </FormControl>
+                      <FormDescription>
+                        توضیح مختصر محصول را وارد کنید
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="description"
+                  render={(field) => (
+                    <FormItem>
+                      <FormLabel>توضیح محصول</FormLabel>
+                      <FormControl>
+                        <Textarea placeholder="" {...field} />
+                      </FormControl>
+                      <FormDescription>
+                        توضیح محصول را وارد کنید
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="price"
+                  render={(field) => (
+                    <FormItem>
+                      <FormLabel>قیمت</FormLabel>
+                      <FormControl>
+                        <Input type="number" {...field} />
+                      </FormControl>
+                      <FormDescription>قیمت محصول را وارد کنید</FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="category"
+                  render={(field) => (
+                    <FormItem>
+                      <FormLabel>دسته بندی</FormLabel>
+                      <FormControl>
+                        <Select>
+                          <SelectTrigger>
+                            <SelectValue placeholder="یک دسته بندی را انتخاب کنید" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {cateogries.map((cat) => (
+                              <SelectItem key={cat} value={cat}>
+                                {cat}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </FormControl>
+                      <FormDescription>دسته بندی را وارد کنید</FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="colors"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>قیمت</FormLabel>
+                      <FormControl>
+                        <div className="grid grid-cols-3 gap-4 my-2">
+                          {colors.map((color) => (
+                            <div
+                              key={color}
+                              className="flex items-center gap-2"
+                            >
+                              <Checkbox
+                                id="color"
+                                checked={field.value?.includes(color)}
+                                onCheckedChange={(checked) => {
+                                  const currentValues = field.value || [];
+                                  if (checked) {
+                                    field.onChange([...currentValues, color]);
+                                  } else {
+                                    field.onChange(
+                                      currentValues.filter((v) => v !== color)
+                                    );
+                                  }
+                                }}
+                              />
+                              <label
+                                htmlFor="color"
+                                className="text-xs flex items-center gap-2"
+                              >
+                                <div
+                                  className={`w-2 h-2 rounded-full`}
+                                  style={{ backgroundColor: color }}
+                                />
+                                {color}
+                              </label>
+                            </div>
                           ))}
-                        </SelectContent>
-                      </Select>
-                    </FormControl>
-                    <FormDescription>دسته بندی را وارد کنید</FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                        </div>
+                      </FormControl>
+                      <FormDescription>
+                        رنگ موجود را انتخاب کنید
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-              <Button>ثبت</Button>
-            </form>
-          </Form>
-        </SheetDescription>
-      </SheetHeader>
+                <Button>ثبت</Button>
+              </form>
+            </Form>
+          </SheetDescription>
+        </SheetHeader>
+      </ScrollArea>
     </SheetContent>
   );
 };
