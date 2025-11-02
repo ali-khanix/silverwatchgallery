@@ -4,10 +4,11 @@ import {
   Home,
   Inbox,
   Plus,
-  Projector,
   Search,
   Settings,
+  ShoppingBasket,
   User2,
+  Users,
   Watch,
 } from "lucide-react";
 
@@ -24,9 +25,6 @@ import {
   SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 
@@ -37,6 +35,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import { Sheet, SheetTrigger } from "./ui/sheet";
+import EditUser from "./EditUser";
 
 // Menu items.
 const items = [
@@ -106,31 +106,47 @@ const AppSidebar = () => {
 
         <SidebarGroup>
           <SidebarGroupLabel>محصولات</SidebarGroupLabel>
-          <SidebarGroupAction title="Add Project">
+          <SidebarGroupAction title="اضافه کردن محصول">
             <Plus /> <span className="sr-only">اضافه کردن محصول</span>
-            <SidebarGroupContent></SidebarGroupContent>
           </SidebarGroupAction>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href={"/#"}>
+                  <Link href={"/products"}>
                     <Watch />
-                    همه ی محصول ها{" "}
+                    همه ی محصول ها
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroupContent>
-
-          <SidebarGroupContent>
-            <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href={"/#"}>
-                    <Plus />
-                    اضافه کردن محصول
-                  </Link>
+                  <Sheet>
+                    <SheetTrigger asChild>
+                      <SidebarMenuButton asChild>
+                        <Link href={"/#"}>
+                          <Plus />
+                          اضافه کردن محصول
+                        </Link>
+                      </SidebarMenuButton>
+                    </SheetTrigger>
+                    <EditUser />
+                  </Sheet>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Sheet>
+                    <SheetTrigger asChild>
+                      <SidebarMenuButton asChild>
+                        <Link href={"/#"}>
+                          <Plus />
+                          اضافه کردن دسته بندی
+                        </Link>
+                      </SidebarMenuButton>
+                    </SheetTrigger>
+                    <EditUser />
+                  </Sheet>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
@@ -138,27 +154,66 @@ const AppSidebar = () => {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>آیتم های نست شده</SidebarGroupLabel>
-
+          <SidebarGroupLabel>کاربران</SidebarGroupLabel>
+          <SidebarGroupAction title="اضافه کردن کاربر">
+            <Plus /> <span className="sr-only">اضافه کردن کاربر</span>
+          </SidebarGroupAction>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href={"/#"}>
-                    <Projector />
-                    مشاهده پروژه ها
+                  <Link href={"/users"}>
+                    <Users />
+                    کاربران
                   </Link>
                 </SidebarMenuButton>
-                <SidebarMenuSub>
-                  <SidebarMenuSubItem>
-                    <SidebarMenuSubButton asChild>
-                      <Link href={"/#"}>
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Sheet>
+                    <SheetTrigger asChild>
+                      <SidebarMenuButton>
                         <Plus />
-                        اضافه کردن سته بندی
-                      </Link>
-                    </SidebarMenuSubButton>
-                  </SidebarMenuSubItem>
-                </SidebarMenuSub>
+                        اضافه کردن کاربر
+                      </SidebarMenuButton>
+                    </SheetTrigger>
+                    <EditUser />
+                  </Sheet>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel>سفارش ها / پرداخت ها</SidebarGroupLabel>
+          <SidebarGroupAction title="اضافه کردن کاربر">
+            <Plus /> <span className="sr-only">اضافه کردن سفارش</span>
+          </SidebarGroupAction>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href={"/payments"}>
+                    <ShoppingBasket />
+                    نمایش همه ی تراکنش ها
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Sheet>
+                    <SheetTrigger asChild>
+                      <SidebarMenuButton>
+                        <Plus />
+                        اضافه کردن سفارش
+                      </SidebarMenuButton>
+                    </SheetTrigger>
+                    <EditUser />
+                  </Sheet>
+                </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
