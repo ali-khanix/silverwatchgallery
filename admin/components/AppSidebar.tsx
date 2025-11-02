@@ -38,6 +38,8 @@ import {
 import { Sheet, SheetTrigger } from "./ui/sheet";
 import EditUser from "./EditUser";
 import AddOrder from "./AddOrder";
+import AddUser from "./AddUser";
+import AddCategory from "./AddCategory";
 
 // Menu items.
 const items = [
@@ -124,9 +126,11 @@ const AppSidebar = () => {
                 <SidebarMenuButton asChild>
                   <Sheet>
                     <SheetTrigger asChild>
-                      <SidebarMenuButton>
-                        <Plus />
-                        اضافه کردن محصول
+                      <SidebarMenuButton asChild>
+                        <Link href={"#"}>
+                          <Plus />
+                          اضافه کردن محصول
+                        </Link>
                       </SidebarMenuButton>
                     </SheetTrigger>
                     <EditUser />
@@ -137,12 +141,14 @@ const AppSidebar = () => {
                 <SidebarMenuButton asChild>
                   <Sheet>
                     <SheetTrigger asChild>
-                      <SidebarMenuButton>
-                        <Plus />
-                        اضافه کردن دسته بندی
+                      <SidebarMenuButton asChild>
+                        <Link href={"#"}>
+                          <Plus />
+                          اضافه کردن دسته بندی
+                        </Link>
                       </SidebarMenuButton>
                     </SheetTrigger>
-                    <EditUser />
+                    <AddCategory />
                   </Sheet>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -151,7 +157,7 @@ const AppSidebar = () => {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>نمایش</SidebarGroupLabel>
+          <SidebarGroupLabel>کاربران</SidebarGroupLabel>
           <SidebarGroupAction title="اضافه کردن کاربر">
             <Plus /> <span className="sr-only">اضافه کردن کاربر</span>
           </SidebarGroupAction>
@@ -161,7 +167,7 @@ const AppSidebar = () => {
                 <SidebarMenuButton asChild>
                   <Link href={"/users"}>
                     <Users />
-                    کاربرانن
+                    نمایش کاربران
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -170,12 +176,14 @@ const AppSidebar = () => {
                 <SidebarMenuButton asChild>
                   <Sheet>
                     <SheetTrigger asChild>
-                      <SidebarMenuButton>
-                        <Plus />
-                        اضافه کردن کاربر
+                      <SidebarMenuButton asChild>
+                        <Link href={"#"}>
+                          <Plus />
+                          اضافه کردن کاربر
+                        </Link>
                       </SidebarMenuButton>
                     </SheetTrigger>
-                    <EditUser />
+                    <AddUser />
                   </Sheet>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -203,9 +211,11 @@ const AppSidebar = () => {
                 <SidebarMenuButton asChild>
                   <Sheet>
                     <SheetTrigger asChild>
-                      <SidebarMenuButton>
-                        <Plus />
-                        اضافه کردن سفارش
+                      <SidebarMenuButton asChild>
+                        <Link href={"#"}>
+                          <Plus />
+                          اضافه کردن سفارش
+                        </Link>
                       </SidebarMenuButton>
                     </SheetTrigger>
                     <AddOrder />
