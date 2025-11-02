@@ -37,6 +37,7 @@ import {
 } from "./ui/dropdown-menu";
 import { Sheet, SheetTrigger } from "./ui/sheet";
 import EditUser from "./EditUser";
+import AddOrder from "./AddOrder";
 
 // Menu items.
 const items = [
@@ -123,11 +124,9 @@ const AppSidebar = () => {
                 <SidebarMenuButton asChild>
                   <Sheet>
                     <SheetTrigger asChild>
-                      <SidebarMenuButton asChild>
-                        <Link href={"/#"}>
-                          <Plus />
-                          اضافه کردن محصول
-                        </Link>
+                      <SidebarMenuButton>
+                        <Plus />
+                        اضافه کردن محصول
                       </SidebarMenuButton>
                     </SheetTrigger>
                     <EditUser />
@@ -138,11 +137,9 @@ const AppSidebar = () => {
                 <SidebarMenuButton asChild>
                   <Sheet>
                     <SheetTrigger asChild>
-                      <SidebarMenuButton asChild>
-                        <Link href={"/#"}>
-                          <Plus />
-                          اضافه کردن دسته بندی
-                        </Link>
+                      <SidebarMenuButton>
+                        <Plus />
+                        اضافه کردن دسته بندی
                       </SidebarMenuButton>
                     </SheetTrigger>
                     <EditUser />
@@ -154,7 +151,7 @@ const AppSidebar = () => {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>کاربران</SidebarGroupLabel>
+          <SidebarGroupLabel>نمایش</SidebarGroupLabel>
           <SidebarGroupAction title="اضافه کردن کاربر">
             <Plus /> <span className="sr-only">اضافه کردن کاربر</span>
           </SidebarGroupAction>
@@ -164,7 +161,7 @@ const AppSidebar = () => {
                 <SidebarMenuButton asChild>
                   <Link href={"/users"}>
                     <Users />
-                    کاربران
+                    کاربرانن
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -211,7 +208,7 @@ const AppSidebar = () => {
                         اضافه کردن سفارش
                       </SidebarMenuButton>
                     </SheetTrigger>
-                    <EditUser />
+                    <AddOrder />
                   </Sheet>
                 </SidebarMenuButton>
               </SidebarMenuItem>

@@ -64,72 +64,40 @@ const AddOrder = () => {
 
               <FormField
                 control={form.control}
-                name=""
+                name="userId"
                 render={(field) => (
                   <FormItem>
-                    <FormLabel>ایمیل</FormLabel>
+                    <FormLabel>آیدی کاربر</FormLabel>
                     <FormControl>
-                      <Input placeholder="alireza@gmail.com" {...field} />
+                      <Input placeholder="" {...field} />
                     </FormControl>
-                    <FormDescription>
-                      فقط ادمین میتواند ایمیل شما را ببیند
-                    </FormDescription>
+                    <FormDescription>آیدی کاربر را وارد کنید</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
-                name="phone"
+                name="status"
                 render={(field) => (
                   <FormItem>
-                    <FormLabel>شماره</FormLabel>
-                    <FormControl>
-                      <Input placeholder="09121234567" {...field} />
-                    </FormControl>
-                    <FormDescription>
-                      فقط ادمین میتواند شماره ی شما را ببیند
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="location"
-                render={(field) => (
-                  <FormItem>
-                    <FormLabel>لوکیشن</FormLabel>
-                    <FormControl>
-                      <Input placeholder="کرج" {...field} />
-                    </FormControl>
-                    <FormDescription>
-                      فقط ادمین میتواند شماره ی شما را ببیند
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="role"
-                render={(field) => (
-                  <FormItem>
-                    <FormLabel>نقش</FormLabel>
+                    <FormLabel>وضعیت</FormLabel>
                     <FormControl>
                       <Select>
                         <SelectTrigger>
-                          <SelectValue placeholder="نقش" />
+                          <SelectValue placeholder="یک وضعیت را انتخاب کنید" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="admin">ادمین</SelectItem>
-                          <SelectItem value="user">کاربر</SelectItem>
+                          <SelectItem value="penidng">درحال ارسال</SelectItem>
+                          <SelectItem value="processing">
+                            در حال پردازش
+                          </SelectItem>
+                          <SelectItem value="success">موفق</SelectItem>
+                          <SelectItem value="failed">ناموفق</SelectItem>
                         </SelectContent>
                       </Select>
                     </FormControl>
-                    <FormDescription>
-                      فقط کاربران تایید شده میتوانند ادمین باشند
-                    </FormDescription>
+                    <FormDescription>وضعیت سفارش را وارد کنید</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
