@@ -29,6 +29,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "./ui/button";
+import { Textarea } from "./ui/textarea";
 
 const cateogries = ["ساعت مچی مردانه", "ساعت مچی زنانه"] as const;
 
@@ -78,7 +79,7 @@ const AddProduct = () => {
                   <FormItem>
                     <FormLabel>اسم محصول</FormLabel>
                     <FormControl>
-                      <Input placeholder="علیرضا محمدی" {...field} />
+                      <Input placeholder="" {...field} />
                     </FormControl>
                     <FormDescription>اسم محصول را وارد کنید</FormDescription>
                     <FormMessage />
@@ -93,7 +94,7 @@ const AddProduct = () => {
                   <FormItem>
                     <FormLabel>توضیح مختصر</FormLabel>
                     <FormControl>
-                      <Input placeholder="alireza@gmail.com" {...field} />
+                      <Input placeholder="" {...field} />
                     </FormControl>
                     <FormDescription>
                       توضیح مختصر محصول را وارد کنید
@@ -107,9 +108,9 @@ const AddProduct = () => {
                 name="description"
                 render={(field) => (
                   <FormItem>
-                    <FormLabel>شماره</FormLabel>
+                    <FormLabel>توضیح محصول</FormLabel>
                     <FormControl>
-                      <Input placeholder="09121234567" {...field} />
+                      <Textarea placeholder="" {...field} />
                     </FormControl>
                     <FormDescription>توضیح محصول را وارد کنید</FormDescription>
                     <FormMessage />
@@ -118,40 +119,39 @@ const AddProduct = () => {
               />
               <FormField
                 control={form.control}
-                name="location"
+                name="price"
                 render={(field) => (
                   <FormItem>
-                    <FormLabel>لوکیشن</FormLabel>
+                    <FormLabel>قیمت</FormLabel>
                     <FormControl>
-                      <Input placeholder="کرج" {...field} />
+                      <Input type="number" {...field} />
                     </FormControl>
-                    <FormDescription>
-                      فقط ادمین میتواند شماره ی شما را ببیند
-                    </FormDescription>
+                    <FormDescription>قیمت محصول را وارد کنید</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
-                name="role"
+                name="category"
                 render={(field) => (
                   <FormItem>
-                    <FormLabel>نقش</FormLabel>
+                    <FormLabel>دسته بندی</FormLabel>
                     <FormControl>
                       <Select>
                         <SelectTrigger>
-                          <SelectValue placeholder="نقش" />
+                          <SelectValue placeholder="یک دسته بندی را انتخاب کنید" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="admin">ادمین</SelectItem>
-                          <SelectItem value="user">کاربر</SelectItem>
+                          {cateogries.map((cat) => (
+                            <SelectItem key={cat} value={cat}>
+                              {cat}
+                            </SelectItem>
+                          ))}
                         </SelectContent>
                       </Select>
                     </FormControl>
-                    <FormDescription>
-                      فقط کاربران تایید شده میتوانند ادمین باشند
-                    </FormDescription>
+                    <FormDescription>دسته بندی را وارد کنید</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
