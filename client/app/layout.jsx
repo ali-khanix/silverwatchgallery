@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 
 import Navbar from "@/components/Navbar";
-import { iranYekan } from "../../public/font/iran-yekan-web/fonts";
+import { iranYekan } from "@/public/font/iran-yekan-web/fonts";
 import Footer from "@/components/Footer";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";

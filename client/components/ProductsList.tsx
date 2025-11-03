@@ -1,7 +1,9 @@
 import ProductCard from "./ProductCard";
 
+import { ProductsType } from "@/lib/schema";
+
 // TEMP
-const products = [
+const products: ProductsType = [
   {
     id: 1,
     name: "کاسیو",
@@ -77,7 +79,7 @@ const products = [
   },
 ];
 
-const ProductsList = ({ offer }) => {
+const ProductsList = ({ offer }: { offer: number }) => {
   return (
     <div className="">
       <div className="flex flex-nowrap gap-2 overflow-scroll sm:overflow-hidden mx-3 sm:mx-0">
