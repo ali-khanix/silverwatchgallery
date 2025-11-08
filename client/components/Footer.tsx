@@ -72,7 +72,7 @@ const Footer = () => {
     <footer className=" bg-zinc-950">
       <div className="p-8 flex justify-between items-center sm:px-0 sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-6xl mx-auto text-white">
         <div className="flex flex-col gap-8 sm:gap-4 sm:flex-row w-full justify-between">
-          <div className="sm:max-w-[25%] flex flex-col gap-2 border-b-1 sm:border-b-0 pb-2">
+          <div className="sm:max-w-[25%] flex flex-col gap-2 border-b sm:border-b-0 pb-2">
             <Link href={"/"}>
               <Image src={"/logo.svg"} width={100} height={100} alt="logo" />
             </Link>

@@ -7,8 +7,15 @@ import { Button } from "./ui/button";
 import { Plus } from "lucide-react";
 import { ShoppingCart } from "lucide-react";
 import { Minus } from "lucide-react";
+import { ProductType } from "@/lib/schema";
 
-const ProductInteraction = ({ product, selectedColor }) => {
+const ProductInteraction = ({
+  product,
+  selectedColor,
+}: {
+  product: ProductType;
+  selectedColor: string;
+}) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -17,13 +24,13 @@ const ProductInteraction = ({ product, selectedColor }) => {
 
   console.log(quantity);
 
-  const handleTypeChange = (type, value) => {
+  const handleTypeChange = (type: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set(type, value);
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  const handleQuantityChange = (type) => {
+  const handleQuantityChange = (type: "increment" | "decrement") => {
     if (type === "increment") {
       setQuantity((prev) => prev + 1);
     } else {
@@ -49,7 +56,7 @@ const ProductInteraction = ({ product, selectedColor }) => {
         <div className="flex items-center gap-2">
           {product.colors.map((color) => (
             <div
-              className={`cursor-pointer border-1 rounded-full p-[1px] ${
+              className={`cursor-pointer border rounded-full p-1px ${
                 selectedColor === color ? "border-zinc-500" : "border-white"
               }`}
               key={color}
@@ -69,14 +76,14 @@ const ProductInteraction = ({ product, selectedColor }) => {
         <span className="text-gray-500">تعداد</span>
         <div className="flex items-center gap-2">
           <Button
-            className="border-1 border-gray-300 bg-transparent text-gray-700 hover:text-white"
+            className="border border-gray-300 bg-transparent text-gray-700 hover:text-white"
             onClick={() => handleQuantityChange("decrement")}
           >
             <Minus className="w-4 h-4" />
           </Button>
           <span className="text-black">{quantity}</span>
           <Button
-            className="border-1 border-gray-300 bg-transparent text-gray-700 hover:text-white"
+            className="border border-gray-300 bg-transparent text-gray-700 hover:text-white"
             onClick={() => handleQuantityChange("increment")}
           >
             <Plus className="w-4 h-4" />
@@ -90,7 +97,7 @@ const ProductInteraction = ({ product, selectedColor }) => {
         افزودن به سبد
       </Button>
 
-      <Button className="bg-white text-gray-700 border-1 hover:bg-transparent hover:border-gray-500">
+      <Button className="bg-white text-gray-700 border hover:bg-transparent hover:border-gray-500">
         <ShoppingCart />
         خرید این محصول
       </Button>

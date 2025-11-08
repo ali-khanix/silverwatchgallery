@@ -2,11 +2,10 @@ import ProductsList from "@/components/ProductsList";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home({ searchParams }) {
-  console.log(searchParams);
+export default function Home() {
   return (
     <>
-      <div className="relative aspect-[1/1] sm:aspect-[3/1]">
+      <div className="relative aspect-square sm:aspect-3/1">
         {/* HERO */}
         <Image
           src={"/images/hero-1.webp"}

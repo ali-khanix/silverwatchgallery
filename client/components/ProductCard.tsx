@@ -1,4 +1,5 @@
 "use client";
+import { ProductType } from "@/lib/schema";
 import useCartStore from "@/stores/cartStore";
 import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
@@ -6,7 +7,13 @@ import Link from "next/link";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-const ProductCard = ({ product, offer }) => {
+const ProductCard = ({
+  product,
+  offer,
+}: {
+  product: ProductType;
+  offer?: number;
+}) => {
   const [productTypes, setProductTypes] = useState({
     color: product.colors[0],
   });
@@ -23,7 +30,13 @@ const ProductCard = ({ product, offer }) => {
     toast.success("محصول به کارت اضافه شد");
   };
 
-  function handleProductType(type, value) {
+  function handleProductType({
+    type,
+    value,
+  }: {
+    type: "color" | "";
+    value: string;
+  }) {
     setProductTypes((prev) => ({
       ...prev,
       [type]: value,
@@ -33,7 +46,7 @@ const ProductCard = ({ product, offer }) => {
     <div className="rounded-3xl overflow-hidden bg-white flex flex-col p-2 sm:mx-0 sm:px-4 sm:py-4 sm:my-4 hover:-translate-y-1 transition-all duration-300 hover:bg-zinc-50">
       {/* IMAGE */}
 
-      <div className="relative aspect-[3/4] sm:aspect-[3/4]">
+      <div className="relative aspect-3/4 ">
         <Link href={`/products/${product.id}`} className="w-full ">
           <Image
             src={product.images[productTypes.color]}
@@ -68,11 +81,11 @@ const ProductCard = ({ product, offer }) => {
           {product.colors.map((color) => (
             <div
               key={color}
-              className={`p-[1px] rounded-full`}
+              className={`p-px rounded-full`}
               onClick={() => handleProductType({ type: "color", value: color })}
             >
               <div
-                className="w-[14px] h-[14px] rounded-full"
+                className="w-3.5 h-3.5 rounded-full"
                 style={{ backgroundColor: color }}
               ></div>
             </div>

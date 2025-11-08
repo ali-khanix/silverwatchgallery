@@ -17,7 +17,7 @@ const PaymentForm = () => {
 
   const router = useRouter();
 
-  const handlePaymentForm = (data) => {};
+  const handlePaymentForm = () => {};
 
   return (
     <div>
